@@ -1,0 +1,22 @@
+
+[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+
+# Git branch in prompt.
+
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+export PS1="\u \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
+
+# Aliases for development
+
+alias pgsql_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+alias pgsql_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+
+alias be="bundle exec"
