@@ -1,4 +1,5 @@
 ## dotfiles
+Use it well :)
 
 ## VIM plugins
 Installation Vundle
