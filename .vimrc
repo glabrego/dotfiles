@@ -1,4 +1,4 @@
-"" .vimrc
+"".vimrc
 
 set nocompatible                   " don't need to maintain compatibility with vi
 
@@ -12,7 +12,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-vinegar'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
@@ -26,13 +26,12 @@ Plugin 'tpope/vim-rails'
 Plugin 'scrooloose/nerdtree'
 
 Plugin 'mileszs/ack.vim'
-" Plugin 'rking/ag.vim'
+Plugin 'rking/ag.vim'
 
 Plugin 'majutsushi/tagbar'
 Plugin 'godlygeek/tabular'
 Plugin 'terryma/vim-multiple-cursors'
-
-" Plugin 'fatih/vim-go'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()
 filetype plugin indent on
@@ -53,13 +52,13 @@ set relativenumber                 " show the relative line number for each line
 set numberwidth=5                  " number of columns to use for the line number
 
 syntax enable                      " enable syntax highlighting
-" colorscheme badwolf                " set default colorscheme
+colorscheme badwolf                " set default colorscheme
 
 " some colorscheme adjustments
 highlight VertSplit ctermfg=235 ctermbg=235
 
 set hlsearch                       " highlight all matches for the last used search pattern
-"set cursorline                     " highlight the screen line of the cursor
+" set cursorline                     " highlight the screen line of the cursor
 
 set laststatus=2                   " always use a status line for the last window
 set hidden                         " don't unload a buffer when no longer shown in a window
@@ -158,17 +157,13 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-
 " airline
-let g:airline_left_sep = '▶'                      " set left separator
-let g:airline_right_sep = '◀'                     " set right separator
+let g:airline_left_sep = '>'                      " set left separator
+let g:airline_right_sep = '<'                     " set right separator
 let g:airline#extensions#tabline#enabled = 1      " enable list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t'  " show filename only
-let g:airline#extensions#tagbar#enabled = 1       " disable tagbar integration (speed up startup time)
-let g:airline_detect_modified = 1
-let g:airline#extensions#tabline#left_sep = '▶'
-let g:airline#extensions#tabline#left_alt_sep = '|'
-
+let g:airline#extensions#tagbar#enabled = 0       " disable tagbar integration (speed up startup time)
+let g:airline_detect_modified=1
 
 " make ultisnips and youcompleteme play well together
 let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
