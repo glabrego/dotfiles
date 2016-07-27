@@ -33,6 +33,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'airblade/vim-gitgutter'
 
+Plugin 'christoomey/vim-tmux-navigator'
+
 call vundle#end()
 filetype plugin indent on
 
