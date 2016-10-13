@@ -6,36 +6,29 @@ set nocompatible                   " don't need to maintain compatibility with v
 "
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin()
+ Plug 'bling/vim-airline'              " Status bar for vim
+ Plug 'kien/ctrlp.vim'                 " Finder for vim
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-vinegar'
-Plugin 'kien/ctrlp.vim'
+ Plug 'tpope/vim-surround'             " Edit surroundings of code, trading parentheses for brackets and etc
 
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
+ Plug 'tpope/vim-commentary'           " Comment code faster
+ Plug 'Raimondi/delimitMate'           " Auto-close parentheses, brackets and etc
+ Plug 'SirVer/UltiSnips'               " Advanced code snippets system
+ Plug 'honza/vim-snippets'             " The snippets used by UltiSnips
 
-Plugin 'tpope/vim-commentary'
-Plugin 'Raimondi/delimitMate'
-Plugin 'SirVer/UltiSnips'
-Plugin 'honza/vim-snippets'
+ Plug 'tpope/vim-rails'                " Rails shortcuts for vim
+ Plug 'scrooloose/nerdtree'            " File and directories navigation
 
-Plugin 'tpope/vim-rails'
-Plugin 'scrooloose/nerdtree'
+ Plug 'mileszs/ack.vim'                " Search tool for vim
+ Plug 'rking/ag.vim'                   " Silver Searcher plugin integration
 
-Plugin 'mileszs/ack.vim'
-Plugin 'rking/ag.vim'
+ Plug 'godlygeek/tabular'              " Auto text alignment
+ Plug 'terryma/vim-multiple-cursors'   " Multiple cursors Sublime-like
 
-Plugin 'majutsushi/tagbar'
-Plugin 'godlygeek/tabular'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'airblade/vim-gitgutter'
+ Plug 'christoomey/vim-tmux-navigator' " Better vim-tmux integration for pane navigation
+call plug#end()
 
-Plugin 'christoomey/vim-tmux-navigator'
-
-call vundle#end()
 filetype plugin indent on
 
 " basic settings
@@ -60,7 +53,7 @@ colorscheme badwolf                " set default colorscheme
 highlight VertSplit ctermfg=235 ctermbg=235
 
 set hlsearch                       " highlight all matches for the last used search pattern
-" set cursorline                     " highlight the screen line of the cursor
+" set cursorline                   " highlight the screen line of the cursor
 
 set laststatus=2                   " always use a status line for the last window
 set hidden                         " don't unload a buffer when no longer shown in a window
@@ -107,13 +100,13 @@ nnoremap <Up> :echoe "use k"<CR>
 nnoremap <Right> :echoe "use l"<CR>
 
 " quicker split navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <leader>j <C-W><C-J>
+nnoremap <leader>k <C-W><C-K>
+nnoremap <leader>l <C-W><C-L>
+nnoremap <leader>h <C-W><C-H>
 
 " " Clear highlight
-nmap \q :nohlsearch<CR>
+nmap <leader>q :nohlsearch<CR>
 
 " open a new empty buffer
 nmap <leader>N :enew<cr>
@@ -132,12 +125,6 @@ nmap <leader>bl :ls<CR>
 
 "Toggles NERDTree
 nmap <silent> <Leader>n :NERDTreeToggle<CR>
-
-"Tagbar
-nmap <silent> <Leader>tt :TagbarToggle<CR>
-
-" index tags
-nnoremap <Leader>ct :!ctags -R .<CR>
 
 " ENTER to remove any search highlighting
 nnoremap <silent> <CR> :nohl<CR><CR>
