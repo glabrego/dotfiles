@@ -7,7 +7,8 @@ set nocompatible                   " don't need to maintain compatibility with v
 filetype off
 
 call plug#begin()
- Plug 'bling/vim-airline'              " Status bar for vim
+ Plug 'vim-airline/vim-airline'        " Status bar for vim
+ Plug 'vim-airline/vim-airline-themes' " Status bar for vim
  Plug 'kien/ctrlp.vim'                 " Finder for vim
 
  Plug 'tpope/vim-surround'             " Edit surroundings of code, trading parentheses for brackets and etc
@@ -47,7 +48,7 @@ set relativenumber                 " show the relative line number for each line
 set numberwidth=5                  " number of columns to use for the line number
 
 syntax enable                      " enable syntax highlighting
-colorscheme badwolf                " set default colorscheme
+colorscheme jellybeans             " set default colorscheme
 
 " some colorscheme adjustments
 highlight VertSplit ctermfg=235 ctermbg=235
@@ -147,6 +148,7 @@ if executable('ag')
 endif
 
 " airline
+let g:airline_theme='jellybeans'                  " set airline theme
 let g:airline_left_sep = '>'                      " set left separator
 let g:airline_right_sep = '<'                     " set right separator
 let g:airline#extensions#tabline#enabled = 1      " enable list of buffers
