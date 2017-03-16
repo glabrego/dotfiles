@@ -101,6 +101,9 @@ set history=100                    " how many command lines are remembered
 " set space as leader
 map <space> <leader>
 
+" double ESC to save
+map <Esc><Esc> :w<CR>
+
 " disable arrow keys
 nnoremap <Left> :echoe "use h"<CR>
 nnoremap <Down> :echoe "use j"<CR>
