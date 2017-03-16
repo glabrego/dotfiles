@@ -9,7 +9,7 @@ filetype off
 call plug#begin()
  Plug 'vim-airline/vim-airline'        " Status bar for vim
  Plug 'vim-airline/vim-airline-themes' " Status bar for vim
- Plug 'ctrlpvim/ctrlp.vim'                 " Finder for vim
+ Plug 'ctrlpvim/ctrlp.vim'             " Finder for vim
 
  Plug 'tpope/vim-surround'             " Edit surroundings of code, trading parentheses for brackets and etc
 
@@ -47,6 +47,12 @@ set number                         " show the line number for each line
 set relativenumber                 " show the relative line number for each line
 set numberwidth=5                  " number of columns to use for the line number
 
+" wrap and linebreak settings
+set showbreak=↪                    " set showbreak icon
+set wrap
+set linebreak
+set nolist
+
 syntax enable                      " enable syntax highlighting
 " set background=dark
 colorscheme jellybeans             " set default colorscheme
@@ -55,7 +61,7 @@ colorscheme jellybeans             " set default colorscheme
 highlight VertSplit ctermfg=235 ctermbg=235
 
 set hlsearch                       " highlight all matches for the last used search pattern
-" set cursorline                   " highlight the screen line of the cursor
+set cursorline                     " highlight the screen line of the cursor
 
 set laststatus=2                   " always use a status line for the last window
 set hidden                         " don't unload a buffer when no longer shown in a window
@@ -106,6 +112,9 @@ nnoremap <leader>j <C-W><C-J>
 nnoremap <leader>k <C-W><C-K>
 nnoremap <leader>l <C-W><C-L>
 nnoremap <leader>h <C-W><C-H>
+
+" double ESC to disable highlight
+map <Esc><Esc> :w<CR>
 
 " " Clear highlight
 nmap <leader>q :nohlsearch<CR>
