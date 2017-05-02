@@ -28,6 +28,8 @@ call plug#begin()
  Plug 'terryma/vim-multiple-cursors'   " Multiple cursors Sublime-like
 
  Plug 'christoomey/vim-tmux-navigator' " Better vim-tmux integration for pane navigation
+
+ Plug 'vimux'                          " Run commands on a tmux pane directly from vim
 call plug#end()
 
 filetype plugin indent on
@@ -148,6 +150,9 @@ nnoremap <silent> <Leader>f :CtrlP<CR>
 nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 nnoremap <silent> <Leader>r :CtrlPMRUFiles<CR>
 nnoremap <silent> <Leader>t :CtrlPTag<CR>
+
+" prompt for a command to run on vimux
+map <Leader>vp :VimuxPromptCommand<CR>
 
 if executable('ag')
   " use ag over grep
