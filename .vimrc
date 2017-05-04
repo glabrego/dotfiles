@@ -29,7 +29,7 @@ call plug#begin()
 
  Plug 'christoomey/vim-tmux-navigator' " Better vim-tmux integration for pane navigation
 
- Plug 'vimux'                          " Run commands on a tmux pane directly from vim
+ Plug 'benmills/vimux'                 " Run commands on a tmux pane directly from vim
 call plug#end()
 
 filetype plugin indent on
