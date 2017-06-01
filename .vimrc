@@ -8,28 +8,21 @@ filetype off
 
 call plug#begin()
  Plug 'vim-airline/vim-airline'        " Status bar for vim
- Plug 'vim-airline/vim-airline-themes' " Status bar for vim
+ Plug 'vim-airline/vim-airline-themes' " Status bar themes for vim
  Plug 'ctrlpvim/ctrlp.vim'             " Finder for vim
-
  Plug 'tpope/vim-surround'             " Edit surroundings of code, trading parentheses for brackets and etc
-
  Plug 'tpope/vim-commentary'           " Comment code faster
  Plug 'Raimondi/delimitMate'           " Auto-close parentheses, brackets and etc
  Plug 'SirVer/UltiSnips'               " Advanced code snippets system
  Plug 'honza/vim-snippets'             " The snippets used by UltiSnips
-
  Plug 'tpope/vim-rails'                " Rails shortcuts for vim
  Plug 'scrooloose/nerdtree'            " File and directories navigation
-
  Plug 'mileszs/ack.vim'                " Search tool for vim
  Plug 'rking/ag.vim'                   " Silver Searcher plugin integration
-
  Plug 'godlygeek/tabular'              " Auto text alignment
  Plug 'terryma/vim-multiple-cursors'   " Multiple cursors Sublime-like
-
  Plug 'christoomey/vim-tmux-navigator' " Better vim-tmux integration for pane navigation
-
- Plug 'benmills/vimux'                 " Run commands on a tmux pane directly from vim
+ Plug 'flazz/vim-colorschemes'         " Vim colorschemes collection
 call plug#end()
 
 filetype plugin indent on
@@ -151,9 +144,6 @@ nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 nnoremap <silent> <Leader>r :CtrlPMRUFiles<CR>
 nnoremap <silent> <Leader>t :CtrlPTag<CR>
 
-" prompt for a command to run on vimux
-map <Leader>vp :VimuxPromptCommand<CR>
-
 if executable('ag')
   " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -166,13 +156,13 @@ if executable('ag')
 endif
 
 " airline
+let g:airline_powerline_fonts = 1
 let g:airline_theme='jellybeans'                  " set airline theme
 let g:airline_left_sep = '>'                      " set left separator
 let g:airline_right_sep = '<'                     " set right separator
 let g:airline#extensions#tabline#enabled = 1      " enable list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t'  " show filename only
 let g:airline#extensions#tagbar#enabled = 0       " disable tagbar integration (speed up startup time)
-let g:airline_detect_modified=1
 
 " make ultisnips and youcompleteme play well together
 let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
@@ -212,5 +202,4 @@ if exists('$ITERM_PROFILE')
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
   endif
 end
-
 "" .vimrc ends here
