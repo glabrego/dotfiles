@@ -140,9 +140,6 @@ nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
 nnoremap <silent> <Leader>r :CtrlPMRUFiles<CR>
 nnoremap <silent> <Leader>t :CtrlPTag<CR>
 
-" prompt for a command to run on vimux
-map <Leader>vp :VimuxPromptCommand<CR>
-
 if executable('ag')
   " use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -155,12 +152,12 @@ if executable('ag')
 endif
 
 " airline
+let g:airline_powerline_fonts = 1
 let g:airline_theme='jellybeans'                  " set airline theme
 let g:airline_powerline_fonts = 1                 " enable powerline symbols
 let g:airline#extensions#tabline#enabled = 1      " enable list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t'  " show filename only
 let g:airline#extensions#tagbar#enabled = 0       " disable tagbar integration (speed up startup time)
-let g:airline_detect_modified=1
 
 " UltiSnips binds
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
@@ -197,5 +194,4 @@ if exists('$ITERM_PROFILE')
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
   endif
 end
-
 "" .vimrc ends here
