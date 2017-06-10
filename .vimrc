@@ -15,7 +15,6 @@ call plug#begin()
  Plug 'Raimondi/delimitMate'           " Auto-close parentheses, brackets and etc
  Plug 'SirVer/UltiSnips'               " Advanced code snippets system
  Plug 'honza/vim-snippets'             " The snippets used by UltiSnips
- Plug 'scrooloose/nerdtree'            " File and directories navigation
  Plug 'mileszs/ack.vim'                " Search tool for vim
  Plug 'rking/ag.vim'                   " Silver Searcher plugin integration
  Plug 'godlygeek/tabular'              " Auto text alignment
@@ -129,8 +128,8 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 " show all open buffers and their status
 nmap <leader>bl :ls<CR>
 
-"Toggles NERDTree
-nmap <silent> <Leader>n :NERDTreeToggle<CR>
+"Toggles Netrw
+nmap <silent> <Leader>n :Lexplore <CR>
 
 " ENTER to remove any search highlighting
 nnoremap <silent> <CR> :nohl<CR><CR>
@@ -152,13 +151,20 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
+" Settings to make netrw behave like nerdtree
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+
 " airline
-let g:airline_powerline_fonts = 1
 let g:airline_theme='jellybeans'                  " set airline theme
 let g:airline_powerline_fonts = 1                 " enable powerline symbols
 let g:airline#extensions#tabline#enabled = 1      " enable list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t'  " show filename only
 let g:airline#extensions#tagbar#enabled = 0       " disable tagbar integration (speed up startup time)
+let g:airline_detect_modified=1
 
 " UltiSnips binds
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
@@ -195,4 +201,5 @@ if exists('$ITERM_PROFILE')
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
   endif
 end
+
 "" .vimrc ends here
