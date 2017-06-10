@@ -22,6 +22,7 @@ call plug#begin()
  Plug 'terryma/vim-multiple-cursors'   " Multiple cursors Sublime-like
  Plug 'christoomey/vim-tmux-navigator' " Better vim-tmux integration for pane navigation
  Plug 'glabrego/vim-colorschemes'      " My updated version of flazz/vim-colorschemes
+ Plug 'elixir-lang/vim-elixir'         " Elixir syntax support
 call plug#end()
 
 filetype plugin indent on
