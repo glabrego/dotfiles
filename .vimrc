@@ -22,6 +22,7 @@ call plug#begin()
  Plug 'christoomey/vim-tmux-navigator' " Better vim-tmux integration for pane navigation
  Plug 'glabrego/vim-colorschemes'      " My updated version of flazz/vim-colorschemes
  Plug 'elixir-lang/vim-elixir'         " Elixir syntax support
+ Plug 'scrooloose/nerdtree'            " File and directories navigation
 call plug#end()
 
 filetype plugin indent on
@@ -128,8 +129,13 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 " show all open buffers and their status
 nmap <leader>bl :ls<CR>
 
-"Toggles Netrw
-nmap <silent> <Leader>n :Lexplore <CR>
+"Toggles NERDTree
+nmap <silent> <Leader>n :NERDTreeToggle <CR>
+
+" NERDTree settings
+let NERDTreeQuitOnOpen = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
 " ENTER to remove any search highlighting
 nnoremap <silent> <CR> :nohl<CR><CR>
@@ -150,13 +156,6 @@ if executable('ag')
   " ag is fast enough that ctrlp doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
-
-" Settings to make netrw behave like nerdtree
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
 
 " airline
 let g:airline_theme='jellybeans'                  " set airline theme
