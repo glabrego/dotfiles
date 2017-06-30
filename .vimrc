@@ -9,20 +9,19 @@ filetype off
 call plug#begin()
  Plug 'vim-airline/vim-airline'        " Status bar for vim
  Plug 'vim-airline/vim-airline-themes' " Status bar themes for vim
- Plug 'ctrlpvim/ctrlp.vim'             " Finder for vim
  Plug 'tpope/vim-surround'             " Edit surroundings of code, trading parentheses for brackets and etc
  Plug 'tpope/vim-commentary'           " Comment code faster
  Plug 'Raimondi/delimitMate'           " Auto-close parentheses, brackets and etc
  Plug 'SirVer/UltiSnips'               " Advanced code snippets system
  Plug 'honza/vim-snippets'             " The snippets used by UltiSnips
- Plug 'mileszs/ack.vim'                " Search tool for vim
- Plug 'rking/ag.vim'                   " Silver Searcher plugin integration
  Plug 'godlygeek/tabular'              " Auto text alignment
  Plug 'terryma/vim-multiple-cursors'   " Multiple cursors Sublime-like
  Plug 'christoomey/vim-tmux-navigator' " Better vim-tmux integration for pane navigation
  Plug 'glabrego/vim-colorschemes'      " My updated version of flazz/vim-colorschemes
  Plug 'elixir-lang/vim-elixir'         " Elixir syntax support
  Plug 'scrooloose/nerdtree'            " File and directories navigation
+ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+ Plug 'junegunn/fzf.vim'
 call plug#end()
 
 filetype plugin indent on
@@ -140,11 +139,23 @@ let NERDTreeDirArrows = 1
 " ENTER to remove any search highlighting
 nnoremap <silent> <CR> :nohl<CR><CR>
 
-" ctrlp
-nnoremap <silent> <Leader>f :CtrlP<CR>
-nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
-nnoremap <silent> <Leader>r :CtrlPMRUFiles<CR>
-nnoremap <silent> <Leader>t :CtrlPTag<CR>
+" RipGrep
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>p :Find<CR>
+
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+" RipGrep
 
 if executable('ag')
   " use ag over grep
