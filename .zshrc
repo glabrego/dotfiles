@@ -98,3 +98,11 @@ alias t="bundle exec rspec"
 # Docker
 alias remove-docker-containers="docker rm $(docker ps -a -q)"
 alias remove-docker-images="docker rmi $(docker images -q)"
+
+# rbenv configs
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# Fzf configs and ripgrep
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
