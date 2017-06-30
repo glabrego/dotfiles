@@ -88,16 +88,17 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 # Aliases for development
-alias pgsql_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-alias pgsql_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-alias be="bundle exec"
-alias s="bundle exec rails s"
-alias c="bundle exec rails c"
-alias t="bundle exec rspec"
+alias pgsql_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pgsql_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias be='bundle exec'
+alias s='bundle exec rails s'
+alias c='bundle exec rails c'
+alias t='bundle exec rspec'
 
 # Docker
-alias remove-docker-containers="docker rm $(docker ps -a -q)"
-alias remove-docker-images="docker rmi $(docker images -q)"
+alias docker_cleanup_containers='docker rm $(docker ps -a -q)'
+alias docker_cleanup_images='docker rmi $(docker images -q)'
+alias docker_kill_containers='docker kill $(docker ps -q)'
 
 # rbenv configs
 export PATH="$HOME/.rbenv/bin:$PATH"
