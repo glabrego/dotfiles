@@ -1,7 +1,12 @@
 "".vimrc
 
-set nocompatible                       " don't need to maintain compatibility with vi
-filetype off
+" vim-plug (https://github.com/junegunn/vim-plug) settings
+" Automatically install vim-plug and run PlugInstall if vim-plug not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
 
 " plugin management
 call plug#begin()
@@ -23,11 +28,12 @@ call plug#end()
 filetype plugin indent on
 
 " basic settings
+filetype off
+set nocompatible                   " don't need to maintain compatibility with vi
 set incsearch                      " show match for partly typed search command
 set ignorecase                     " ignore case when using a search pattern
 set smartcase                      " override 'ignorecase' when pattern has upper case characters
 set scrolloff=5                    " number of screen lines to show around the cursor
-set nowrap                         " don't wrap long lines
 set lazyredraw                     " don't redraw while executing macros
 set list                           " show invisibles
 set listchars=tab:»·,trail:·       " show extra space characters
@@ -44,7 +50,6 @@ syntax enable                      " enable syntax highlighting
 " colorscheme settings and adjustments
 colorscheme papercolor             " set default colorscheme
 set background=dark
-highlight VertSplit ctermfg=235 ctermbg=235
 
 set hlsearch                       " highlight all matches for the last used search pattern
 set laststatus=2                   " always use a status line for the last window
