@@ -12,6 +12,12 @@ Copy all of these files to your user directory and follow the instructions bello
 
 ## VIM Setup instructions
 
+If you use NeoVim instead of Vim, i recommend you to just create this two symlinks to make things easier to manage:
+```
+ln -s ~/.vim ~/.config/nvim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
+```
+
 My `.vimrc` includes a little explanation of what each plugin can do, so you can read the descriptions and decide wich plugin is necessary for you :)
 
 I use Plug to manage my vim plugins, so...
