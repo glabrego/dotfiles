@@ -1,0 +1,17 @@
+#!/bin/bash
+
+function postgres_container {
+  if [ -z "$1" ] || [ -z "$2" ]
+  then
+    echo 'No user and password given'
+    echo 'Starting postgres container with default user and password'
+    docker run -d -p 5432:5432 postgres
+    echo 'USER: postgres'
+    echo 'PASSWORD: postgres'
+  else
+    echo 'Starting postgres container with indicated user and password'
+    docker run -d -p 5432:5432 -e POSTGRES_USER=$1 -e POSTGRES_PASSWORD=$2 postgres
+    echo "USER: $1"
+    echo "PASSWORD: $2"
+  fi
+}
