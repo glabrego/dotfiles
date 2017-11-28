@@ -4,6 +4,9 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
+# get my personalized functions
+source ~/dotfiles/functions/.*
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/glabrego/.oh-my-zsh
 
@@ -54,7 +57,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bundler osx rake ruby tmux tmuxinator)
+plugins=(git bundler osx rake ruby tmux tmuxinator docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -65,12 +68,12 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='vim'
-fi
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -94,6 +97,7 @@ alias be='bundle exec'
 alias s='bundle exec rails s'
 alias c='bundle exec rails c'
 alias t='bundle exec rspec'
+alias vim='nvim'
 
 # Docker
 alias docker_cleanup_containers='docker rm $(docker ps -a -q)'
