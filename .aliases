@@ -1,0 +1,7 @@
+alias be='bundle exec'
+alias s='bundle exec rails s'
+alias c='bundle exec rails c'
+alias t='bundle exec rspec'
+alias pgsql_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pgsql_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias vim='nvim'
