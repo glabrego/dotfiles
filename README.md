@@ -1,6 +1,6 @@
 ## glabrego dotfiles
 Use it well :)
-
+ 
 ## What's included?
 
 - `.vimrc`;
