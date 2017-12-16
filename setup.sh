@@ -36,6 +36,7 @@ git clone git@github.com:glabrego/dotfiles.git ~/workspace/dotfiles &
 git clone git@github.com:glabrego/my-changelog.git ~/workspace/my-changelog &
 git clone git@github.com:glabrego/glabrego.github.io.git ~/workspace/glabrego.github.io &
 git clone git@github.com:glabrego/glabrego-codes.git ~/workspace/glabrego-codes &
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d &
 wait
 echo 'Done!'
 
@@ -57,7 +58,7 @@ ln -s ~/workspace/dotfiles/.aliases   ~/.aliases
 ln -s ~/workspace/dotfiles/.functions ~/.functions
 ln -s ~/workspace/dotfiles/.zshrc     ~/.zshrc
 ln -s ~/workspace/dotfiles/.vimrc     ~/.vimrc
-ln -s ~/workspace/dotfiles/.vimrc     ~/.tmux.conf
+ln -s ~/workspace/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/workspace/dotfiles/.spacemacs ~/.spacemacs
 echo 'Done!'
 
@@ -69,3 +70,5 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim -c :PlugInstall --headless &
 echo 'Done!'
+
+
