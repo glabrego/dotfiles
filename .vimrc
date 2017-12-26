@@ -49,7 +49,7 @@ syntax enable                      " enable syntax highlighting
 
 " colorscheme settings and adjustments
 colorscheme papercolor             " set default colorscheme
-set background=dark
+set background=light
 
 set hlsearch                       " highlight all matches for the last used search pattern
 set laststatus=2                   " always use a status line for the last window
@@ -163,7 +163,7 @@ if executable('ag')
 endif
 
 " airline theme settings
-let g:airline_theme='minimalist'                  " set airline theme
+let g:airline_theme='papercolor'                  " set airline theme
 let g:airline_powerline_fonts = 1                 " enable powerline symbols
 let g:airline#extensions#tabline#enabled = 1      " enable list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t'  " show filename only
