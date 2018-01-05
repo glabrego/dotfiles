@@ -23,6 +23,7 @@ call plug#begin()
  Plug 'scrooloose/nerdtree'            " File and directories navigation
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  Plug 'junegunn/fzf.vim'
+ Plug 'fatih/vim-go'
 call plug#end()
 
 filetype plugin indent on
