@@ -21,9 +21,11 @@ call plug#begin()
  Plug 'glabrego/vim-colorschemes'      " My updated version of flazz/vim-colorschemes
  Plug 'elixir-lang/vim-elixir'         " Elixir syntax support
  Plug 'scrooloose/nerdtree'            " File and directories navigation
+ Plug 'fatih/vim-go'                   " Support for Golang
+ Plug 'elixir-lang/vim-elixir'         " Support for Elixir lang
+ Plug 'slashmili/alchemist.vim'        " Integration with Elixir tools
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  Plug 'junegunn/fzf.vim'
- Plug 'fatih/vim-go'
 call plug#end()
 
 filetype plugin indent on
