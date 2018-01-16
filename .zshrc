@@ -4,9 +4,10 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 
-# get my personalized functions
+# get my personalized functions and aliases
 source ~/.functions
 source ~/.aliases
+source ~/.aliases_locaweb
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
