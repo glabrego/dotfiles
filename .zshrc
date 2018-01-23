@@ -7,7 +7,6 @@ export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/
 # get my personalized functions and aliases
 source ~/.functions
 source ~/.aliases
-source ~/.aliases_locaweb
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
