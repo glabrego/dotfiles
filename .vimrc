@@ -26,6 +26,7 @@ call plug#begin()
  Plug 'slashmili/alchemist.vim'        " Integration with Elixir tools
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  Plug 'junegunn/fzf.vim'
+ Plug 'tpope/vim-repeat'               " Enable '.' to repeat plugins commands
 call plug#end()
 
 filetype plugin indent on
