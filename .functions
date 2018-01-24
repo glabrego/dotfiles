@@ -14,3 +14,13 @@ function postgres_container {
     echo "PASSWORD: $2"
   fi
 }
+
+function bash_container {
+  if [ -z "$1" ]
+  then
+    echo "You forgot to inform a container name or id"
+  else
+    echo "Starting bash on $1"
+    docker exec -i -t $1 /bin/bash
+  fi
+}
