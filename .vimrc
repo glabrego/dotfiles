@@ -27,6 +27,7 @@ call plug#begin()
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  Plug 'junegunn/fzf.vim'
  Plug 'tpope/vim-repeat'               " Enable '.' to repeat plugins commands
+ Plug 'roxma/nvim-completion-manager'  " Nvim autocompletion
 call plug#end()
 
 filetype plugin indent on
@@ -37,12 +38,14 @@ set nocompatible                   " don't need to maintain compatibility with v
 set incsearch                      " show match for partly typed search command
 set ignorecase                     " ignore case when using a search pattern
 set smartcase                      " override 'ignorecase' when pattern has upper case characters
-set scrolloff=5                    " number of screen lines to show around the cursor
+set scrolloff=3                    " number of screen lines to show around the cursor
 set lazyredraw                     " don't redraw while executing macros
 set list                           " show invisibles
 set listchars=tab:»·,trail:·       " show extra space characters
 set number                         " show the line number for each line
+set relativenumber
 set numberwidth=5                  " number of columns to use for the line number
+set inccommand=nosplit             " show a preview of strings manipulation
 
 " wrap and linebreak settings
 set showbreak=↪                    " set showbreak icon
@@ -100,8 +103,12 @@ nnoremap <leader>k <C-W><C-K>
 nnoremap <leader>l <C-W><C-L>
 nnoremap <leader>h <C-W><C-H>
 
-" " Clear highlight
+" Clear highlight
 nmap <leader>q :nohlsearch<CR>
+
+" Use TAB to navigate between autocompletions
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " open a new empty buffer
 nmap <leader>N :enew<cr>
