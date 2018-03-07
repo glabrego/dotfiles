@@ -340,3 +340,16 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(defun neotree-project-dir ()
+ "Open NeoTree using the git root."
+ (interactive)
+ (let ((project-dir (projectile-project-root))
+       (file-name (buffer-file-name)))
+  (neotree-toggle)
+  (if project-dir
+   (if (neo-global--window-exists-p)
+    (progn
+     (neotree-dir project-dir)
+     (neotree-find file-name)))
+   (message "Could not find git project root."))))
+  (spacemacs/set-leader-keys "nn" 'neotree-project-dir)
