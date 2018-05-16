@@ -102,6 +102,8 @@ nnoremap <leader>j <C-W><C-J>
 nnoremap <leader>k <C-W><C-K>
 nnoremap <leader>l <C-W><C-L>
 nnoremap <leader>h <C-W><C-H>
+nnoremap <leader>= <C-W><C-=>
+nnoremap <leader>o <C-W><C-o>
 
 " Clear highlight
 nmap <leader>q :nohlsearch<CR>
