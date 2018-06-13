@@ -24,3 +24,12 @@ function bash_container {
     docker exec -i -t $1 /bin/bash
   fi
 }
+
+function postgres_container_extension {
+  if [ "$1" ]
+  then
+    docker exec -it $1 psql -U postgres -d template1 -c 'create extension "uuid-ossp";'
+  else
+    echo "You forgot to inform a container name or id"
+  fi
+}
