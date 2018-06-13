@@ -28,6 +28,7 @@ call plug#begin()
  Plug 'junegunn/fzf.vim'
  Plug 'tpope/vim-repeat'               " Enable '.' to repeat plugins commands
  Plug 'roxma/nvim-completion-manager'  " Nvim autocompletion
+ Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 filetype plugin indent on
@@ -55,7 +56,7 @@ set nolist
 syntax enable                      " enable syntax highlighting
 
 " colorscheme settings and adjustments
-colorscheme hybrid                 " set default colorscheme
+colorscheme hybrid " set default colorscheme
 set background=dark
 
 set hlsearch                       " highlight all matches for the last used search pattern
@@ -104,6 +105,12 @@ nnoremap <leader>l <C-W><C-L>
 nnoremap <leader>h <C-W><C-H>
 nnoremap <leader>= <C-W><C-=>
 nnoremap <leader>o <C-W><C-o>
+
+" quicker insert mode navigation
+inoremap <C-H> <Left>
+inoremap <C-L> <Right>
+inoremap <C-J> <Down>
+inoremap <C-K> <Up>
 
 " Clear highlight
 nmap <leader>q :nohlsearch<CR>
@@ -182,6 +189,16 @@ let g:airline#extensions#tabline#enabled = 1      " enable list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t'  " show filename only
 let g:airline#extensions#tagbar#enabled = 0       " disable tagbar integration (speed up startup time)
 let g:airline_detect_modified=1
+
+" syntastic
+let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+
+function! RubocopAutocorrect()
+  execute "!rubocop -a " . bufname("%")
+  call SyntasticCheck()
+endfunction
+
+map <silent> <Leader>cop :call RubocopAutocorrect()<cr>
 
 " autocmd
 "
