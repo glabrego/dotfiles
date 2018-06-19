@@ -28,7 +28,6 @@ call plug#begin()
  Plug 'junegunn/fzf.vim'
  Plug 'tpope/vim-repeat'               " Enable '.' to repeat plugins commands
  Plug 'roxma/nvim-completion-manager'  " Nvim autocompletion
- Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 filetype plugin indent on
@@ -189,16 +188,6 @@ let g:airline#extensions#tabline#enabled = 1      " enable list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t'  " show filename only
 let g:airline#extensions#tagbar#enabled = 0       " disable tagbar integration (speed up startup time)
 let g:airline_detect_modified=1
-
-" syntastic
-let g:syntastic_ruby_checkers = ['rubocop', 'mri']
-
-function! RubocopAutocorrect()
-  execute "!rubocop -a " . bufname("%")
-  call SyntasticCheck()
-endfunction
-
-map <silent> <Leader>cop :call RubocopAutocorrect()<cr>
 
 " autocmd
 "
