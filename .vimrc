@@ -27,8 +27,6 @@ call plug#begin()
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  Plug 'junegunn/fzf.vim'
  Plug 'tpope/vim-repeat'               " Enable '.' to repeat plugins commands
- Plug 'ncm2/ncm2'                      " Nvim autocompletion
- Plug 'roxma/nvim-yarp'
 call plug#end()
 
 filetype plugin indent on
@@ -114,12 +112,6 @@ inoremap <C-K> <Up>
 
 " Clear highlight
 nmap <leader>q :nohlsearch<CR>
-
-" Use TAB to navigate between autocompletions
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " open a new empty buffer
 nmap <leader>N :enew<cr>
