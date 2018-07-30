@@ -33,3 +33,6 @@ function postgres_container_extension {
     echo "You forgot to inform a container name or id"
   fi
 }
+
+function postgres_username { ruby -e 'require "yaml"; p YAML.load(File.read("config/database.yml"))["defaults"]["username"]' }
+function postgres_password { ruby -e 'require "yaml"; p YAML.load(File.read("config/database.yml"))["defaults"]["password"]' }
