@@ -54,8 +54,8 @@ set nolist
 syntax enable                      " enable syntax highlighting
 
 " colorscheme settings and adjustments
-colorscheme hybrid " set default colorscheme
-set background=dark
+colorscheme solarized              " set default colorscheme
+set background=light
 
 set hlsearch                       " highlight all matches for the last used search pattern
 set laststatus=2                   " always use a status line for the last window
@@ -143,9 +143,6 @@ nnoremap <silent> <CR> :nohl<CR><CR>
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>p :Find<CR>
 
-" Map SwitchRelativeNumber
-nmap <silent> - :call SwitchRelativeNumber()<CR>
-
 " --column: Show column number
 " --line-number: Show line number
 " --no-heading: Do not show file headings in results
@@ -158,9 +155,24 @@ nmap <silent> - :call SwitchRelativeNumber()<CR>
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
+" Map SwitchRelativeNumber
+nmap <silent> - :call SwitchRelativeNumber()<CR>
+
 " Switch between relativenumber and normal number
 function SwitchRelativeNumber()
   set rnu!
+endfunction
+
+" Map for SwitchBackgroundColor
+nmap <silent> _ :call SwitchBackgroundColor()<CR>
+
+" Switch between light and dark themes
+function SwitchBackgroundColor()
+  if &background ==  'dark'
+    set background=light
+  else
+    set background=dark
+  endif
 endfunction
 
 " RipGrep
@@ -177,7 +189,7 @@ if executable('ag')
 endif
 
 " airline theme settings
-let g:airline_theme='hybrid'                  " set airline theme
+let g:airline_theme='solarized'                  " set airline theme
 let g:airline_powerline_fonts = 1                 " enable powerline symbols
 let g:airline#extensions#tabline#enabled = 1      " enable list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t'  " show filename only
