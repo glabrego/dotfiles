@@ -7,6 +7,10 @@ alias pgsql_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/
 alias pgsql_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias vim='nvim'
 
+# improving cli
+alias cat='bat'
+alias ping='prettyping --nolegend'
+
 # Containers
 alias redis_container='docker run -d -p 6379:6379 redis'
 

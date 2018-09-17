@@ -3,6 +3,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+export BAT_THEME="GitHub"
 
 # get my personalized functions and aliases
 source ~/.functions
@@ -92,10 +93,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Fzf configs and ripgrep
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
 # rbenv configs
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-# Fzf configs and ripgrep
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
