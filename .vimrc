@@ -16,7 +16,6 @@ call plug#begin()
  Plug 'tpope/vim-commentary'           " Comment code faster
  Plug 'Raimondi/delimitMate'           " Auto-close parentheses, brackets and etc
  Plug 'godlygeek/tabular'              " Auto text alignment
- Plug 'terryma/vim-multiple-cursors'   " Multiple cursors Sublime-like
  Plug 'christoomey/vim-tmux-navigator' " Better vim-tmux integration for pane navigation
  Plug 'glabrego/vim-colorschemes'      " My updated version of flazz/vim-colorschemes
  Plug 'elixir-lang/vim-elixir'         " Elixir syntax support
@@ -116,11 +115,16 @@ nmap <leader>q :nohlsearch<CR>
 " open a new empty buffer
 nmap <leader>N :enew<cr>
 
-" move to the next buffer
-nmap <leader>l :bnext<CR>
+" open new tab
+nmap <leader>t :tabnew<cr>
 
-" move to the previous buffer
-nmap <leader>h :bprevious<CR>
+" move between tabs
+nmap <leader>l gt
+nmap <leader>h gT
+
+" move between buffers
+nmap <leader>k :bprevious<cr>
+nmap <leader>j :bnext<cr>
 
 " close the current buffer and move to the previous one
 nmap <leader>bq :bp <BAR> bd #<CR>
