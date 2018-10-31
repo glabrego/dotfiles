@@ -26,6 +26,7 @@ call plug#begin()
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  Plug 'junegunn/fzf.vim'
  Plug 'tpope/vim-repeat'               " Enable '.' to repeat plugins commands
+ Plug 'tmhedberg/matchit'
 call plug#end()
 
 filetype plugin indent on
@@ -88,6 +89,14 @@ map <space> <leader>
 
 " double ESC to save
 map <Esc><Esc> :w<CR>
+
+" shorcuts to my vimrc
+nmap <leader>vr :tabe $MYVIMRC<cr>
+nmap <leader>so :source $MYVIMRC<cr>
+
+" navigate wrapped lines
+nmap k gk
+nmap j gj
 
 " disable arrow keys
 nnoremap <Left> :echoe "use h"<CR>
