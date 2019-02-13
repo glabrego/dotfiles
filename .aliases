@@ -6,6 +6,7 @@ alias dbconsole='bundle exec rails dbconsole'
 alias pgsql_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pgsql_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias vim='nvim'
+alias irb++='irb -r active_support/all'
 
 # improving cli
 alias cat='bat'

@@ -128,12 +128,8 @@ nmap <leader>N :enew<cr>
 nmap <leader>t :tabnew<cr>
 
 " move between tabs
-nmap <leader>l gt
-nmap <leader>h gT
-
-" move between buffers
-nmap <leader>k :bprevious<cr>
-nmap <leader>j :bnext<cr>
+nmap <leader>l :bnext<cr>
+nmap <leader>h :bprevious<cr>
 
 " close the current buffer and move to the previous one
 nmap <leader>bq :bp <BAR> bd #<CR>
