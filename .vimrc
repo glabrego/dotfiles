@@ -27,6 +27,7 @@ call plug#begin()
  Plug 'junegunn/fzf.vim'
  Plug 'tpope/vim-repeat'               " Enable '.' to repeat plugins commands
  Plug 'tmhedberg/matchit'
+ Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 filetype plugin indent on
