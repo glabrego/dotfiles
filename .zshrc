@@ -60,7 +60,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bundler osx rake ruby tmux tmuxinator docker docker-compose golang)
+plugins=(git bundler macos rake ruby rbenv rails tmux tmuxinator docker docker-compose golang kubectl minikube httpie)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,9 +95,8 @@ source $ZSH/oh-my-zsh.sh
 
 # Fzf configs and ripgrep
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!.git/*" -g "!public/*" -g "!tmp/*" -g "!log/*" -g "!node_modules/*"'
 
 # rbenv configs
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-
