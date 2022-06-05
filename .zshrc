@@ -60,7 +60,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bundler macos rake ruby rbenv rails tmux tmuxinator docker docker-compose golang kubectl minikube httpie)
+plugins=(git bundler macos rake ruby rbenv rails tmux tmuxinator docker docker-compose kubectl minikube httpie)
 
 source $ZSH/oh-my-zsh.sh
 
