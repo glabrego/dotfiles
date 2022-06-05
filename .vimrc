@@ -11,13 +11,12 @@ endif
 " plugin management
 call plug#begin()
  Plug 'vim-airline/vim-airline'        " Status bar for vim
- Plug 'vim-airline/vim-airline-themes' " Status bar themes for vim
  Plug 'tpope/vim-surround'             " Edit surroundings of code, trading parentheses for brackets and etc
  Plug 'tpope/vim-commentary'           " Comment code faster
  Plug 'Raimondi/delimitMate'           " Auto-close parentheses, brackets and etc
  Plug 'godlygeek/tabular'              " Auto text alignment
  Plug 'christoomey/vim-tmux-navigator' " Better vim-tmux integration for pane navigation
- Plug 'glabrego/vim-colorschemes'      " My updated version of flazz/vim-colorschemes
+ Plug 'arcticicestudio/nord-vim'       " Nord theme for vim
  Plug 'elixir-lang/vim-elixir'         " Elixir syntax support
  Plug 'scrooloose/nerdtree'            " File and directories navigation
  Plug 'fatih/vim-go'                   " Support for Golang
@@ -44,8 +43,10 @@ set list                           " show invisibles
 set listchars=tab:»·,trail:·       " show extra space characters
 set number                         " show the line number for each line
 set relativenumber
-set numberwidth=5                  " number of columns to use for the line number
+set numberwidth=1                  " number of columns to use for the line number
 set inccommand=nosplit             " show a preview of strings manipulation
+set encoding=utf-8                 " default encoding UTF-8
+set fileencodings=utf-8            " default encoding UTF-8
 
 " wrap and linebreak settings
 set showbreak=↪                    " set showbreak icon
@@ -55,8 +56,7 @@ set nolist
 syntax enable                      " enable syntax highlighting
 
 " colorscheme settings and adjustments
-colorscheme solarized              " set default colorscheme
-set background=light
+colorscheme  nord       " set default colorscheme
 
 set hlsearch                       " highlight all matches for the last used search pattern
 set laststatus=2                   " always use a status line for the last window
@@ -112,6 +112,8 @@ nnoremap <leader>l <C-W><C-L>
 nnoremap <leader>h <C-W><C-H>
 nnoremap <leader>= <C-W><C-=>
 nnoremap <leader>o <C-W><C-o>
+nnoremap <leader><tab> :b#<cr>
+nnoremap <space><space> :buffers<cr>:b<space>
 
 " quicker insert mode navigation
 inoremap <C-H> <Left>
@@ -163,7 +165,7 @@ nnoremap <silent> <Leader>p :Find<CR>
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow -g "!.git/*" -g "!public/*" -g "!tmp/*" -g "!log/*" -g "!node_modules/*" -g "!Gemfile.lock" -g "!yarn.lock" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 " Map SwitchRelativeNumber
 nmap <silent> - :call SwitchRelativeNumber()<CR>
@@ -185,21 +187,8 @@ function SwitchBackgroundColor()
   endif
 endfunction
 
-" RipGrep
-
-if executable('ag')
-  " use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " use ag in ctrlp for listing files
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that ctrlp doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
 " airline theme settings
-let g:airline_theme='solarized'                  " set airline theme
+let g:airline_theme='nord'                        " set airline theme
 let g:airline_powerline_fonts = 1                 " enable powerline symbols
 let g:airline#extensions#tabline#enabled = 1      " enable list of buffers
 let g:airline#extensions#tabline#fnamemod = ':t'  " show filename only
