@@ -18,7 +18,3 @@ alias redis_container='docker run -d -p 6379:6379 redis'
 # Environment
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; sudo gem update --system; sudo gem update; sudo gem cleanup'
 alias refresh_dotfiles='source ~/.zshrc'
-
-# k8s
-alias stg='aws eks update-kubeconfig --region us-east-1 --name staging; kubectl get pods'
-alias prod='aws eks update-kubeconfig --region us-east-1 --name gonddo; kubectl get pods'
