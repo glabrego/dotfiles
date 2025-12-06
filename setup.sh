@@ -36,6 +36,7 @@ git clone git@github.com:glabrego/dotfiles.git ~/workspace/dotfiles &
 git clone git@github.com:glabrego/my-changelog.git ~/workspace/my-changelog &
 git clone git@github.com:glabrego/glabrego.github.io.git ~/workspace/glabrego.github.io &
 git clone git@github.com:glabrego/glabrego-codes.git ~/workspace/glabrego-codes &
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm &
 wait
 echo 'Done!'
 
