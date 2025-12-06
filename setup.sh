@@ -36,7 +36,6 @@ git clone git@github.com:glabrego/dotfiles.git ~/workspace/dotfiles &
 git clone git@github.com:glabrego/my-changelog.git ~/workspace/my-changelog &
 git clone git@github.com:glabrego/glabrego.github.io.git ~/workspace/glabrego.github.io &
 git clone git@github.com:glabrego/glabrego-codes.git ~/workspace/glabrego-codes &
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d &
 wait
 echo 'Done!'
 
@@ -49,17 +48,12 @@ sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
 chsh -s /usr/local/bin/zsh
 echo 'Done!'
 
-echo 'Installing oh-my-zsh 🤯'
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-echo 'Done!'
-
 echo 'Symlinking dotfiles 🔗'
 ln -s ~/workspace/dotfiles/.aliases   ~/.aliases
 ln -s ~/workspace/dotfiles/.functions ~/.functions
 ln -s ~/workspace/dotfiles/.zshrc     ~/.zshrc
 ln -s ~/workspace/dotfiles/.vimrc     ~/.vimrc
 ln -s ~/workspace/dotfiles/.tmux.conf ~/.tmux.conf
-ln -s ~/workspace/dotfiles/.spacemacs ~/.spacemacs
 echo 'Done!'
 
 echo 'Configuring Neovim ⌨️ '
@@ -70,5 +64,4 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim -c :PlugInstall --headless &
 echo 'Done!'
-
 
