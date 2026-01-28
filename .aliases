@@ -11,10 +11,35 @@ alias irb++='irb -r active_support/all'
 # improving cli
 alias cat='bat'
 alias ping='prettyping --nolegend'
+alias ll='ls -la --color'
+alias ..='z ..'
+alias ...='z ../../'
+alias cd='z'
+alias env='env | sort'
 
 # Containers
 alias redis_container='docker run -d -p 6379:6379 redis'
 
 # Environment
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; sudo gem update --system; sudo gem update; sudo gem cleanup'
-alias refresh_dotfiles='source ~/.zshrc'
+alias ed='vim ~/.zshrc'
+alias rd='source ~/.zshrc'
+alias ea='vim ~/.aliases'
+alias ef='vim ~/.functions'
+alias ev='vim ~/.config/nvim/init.lua'
+
+# git aliases
+alias gst='git status'
+alias g='git'
+alias gf='git fetch'
+alias gp='git pull origin'
+alias gfp='git fetch origin && git pull origin'
+alias gP='git push origin'
+alias gb='git branch'
+alias gbD='git branch -D'
+alias gc='git checkout'
+alias gC='git checkout -b'
+alias gd='git diff'
+alias gcm='git commit -m'
+alias ga='git commit --amend --no-edit'
+alias gae='git commit --amend'
