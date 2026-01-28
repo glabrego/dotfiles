@@ -2,8 +2,12 @@
 echo '👨🏻‍💻  Setting everythin up 🤓'
 
 echo 'Adding git keys to ssh-agent 🕵'
-ssh-add -K ~/.ssh/id_rsa
-echo 'done'
+if [ -f ~/.ssh/id_rsa ]; then
+  ssh-add -K ~/.ssh/id_rsa
+  echo 'SSH key added!'
+else
+  echo 'No SSH key found at ~/.ssh/id_rsa, skipping...'
+fi
 
 echo 'Installing Homebrew 🍻'
 if command -v brew >/dev/null 2>&1; then
