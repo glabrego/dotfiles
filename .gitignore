@@ -7,3 +7,6 @@
 # Editor directories
 .vscode/
 .idea/
+
+# Lock files
+Brewfile.lock.json
