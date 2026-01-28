@@ -28,7 +28,7 @@ fi
 echo 'Setting up git configuration 📲'
 git config --global user.name 'Guilherme Labrego'
 git config --global user.email 'glabrego@gmail.com'
-git config --global core.editor vim
+git config --global core.editor nvim
 echo 'Done!'
 
 echo 'Cloning most needed repos 🗄'
@@ -53,16 +53,11 @@ echo 'Symlinking dotfiles 🔗'
 ln -s ~/workspace/dotfiles/.aliases   ~/.aliases
 ln -s ~/workspace/dotfiles/.functions ~/.functions
 ln -s ~/workspace/dotfiles/.zshrc     ~/.zshrc
-ln -s ~/workspace/dotfiles/.vimrc     ~/.vimrc
 ln -s ~/workspace/dotfiles/.tmux.conf ~/.tmux.conf
 echo 'Done!'
 
 echo 'Configuring Neovim ⌨️ '
-mkdir -p ~/.config/nvim/
-ln -s ~/.vim ~/.config/nvim
-ln -s ~/.vimrc ~/.config/nvim/init.vim
-curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-nvim -c :PlugInstall --headless &
+mkdir -p ~/.config/
+ln -sf ~/workspace/dotfiles/nvim ~/.config/nvim
 echo 'Done!'
 

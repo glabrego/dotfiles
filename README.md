@@ -3,50 +3,41 @@ Use it well :)
 
 ## What's included?
 
-- `.vimrc`;
-- `.tmux.conf`;
-- `.zshrc`;
-- `.bash_profile_mac` (old, i don't use it anymore, but why not keep it?)
+- `nvim/` - Neovim configuration (LazyVim-based)
+- `.tmux.conf` - Tmux configuration with plugins
+- `.zshrc` - Zsh shell configuration
+- `.aliases` - Shell aliases for development
+- `.functions` - Custom shell functions
+- `Brewfile` - Homebrew packages and applications
+- `.bash_profile_mac` (deprecated, kept for reference)
 
-Copy all of these files to your user directory and follow the instructions bellow.
+## Installation
 
-## VIM Setup instructions
-
-If you use NeoVim instead of Vim, i recommend you to just create this two symlinks to make things easier to manage:
-```
-ln -s ~/.vim ~/.config/nvim
-ln -s ~/.vimrc ~/.config/nvim/init.vim
-```
-
-My `.vimrc` includes a little explanation of what each plugin can do, so you can read the descriptions and decide wich plugin is necessary for you :)
-
-I use Plug to manage my vim plugins, so...
-
-#### Install plug.vim
-
-[Download plug.vim](https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim)
-and put it in the "autoload" directory.
-
-###### Unix
+Run the setup script to install everything:
 
 ```sh
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+./setup.sh
 ```
 
-###### Neovim
+The script will:
+1. Install Homebrew (if not already installed)
+2. Install all packages from Brewfile
+3. Set up Zsh as default shell
+4. Create symlinks for all configuration files
+5. Configure Neovim
 
-```sh
-curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
+## Neovim Setup
 
-###### Windows (PowerShell)
+This repository includes a complete Neovim configuration based on LazyVim. The setup script automatically symlinks `nvim/` to `~/.config/nvim/`.
 
-```powershell
-md ~\vimfiles\autoload
-$uri = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-(New-Object Net.WebClient).DownloadFile($uri, $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath("~\vimfiles\autoload\plug.vim"))
-```
+**Included plugins:**
+- Telescope (fuzzy finder)
+- Copilot (AI pair programming)
+- Treesitter (syntax highlighting)
+- nvim-tree (file explorer)
+- LSP configuration
+- Autocompletion
+- Catppuccin theme
+- Markview (markdown rendering)
 
-Now, you just need to enter vim, run `:PlugInstall` and you're good to go!
+After running `setup.sh`, launch Neovim and it will automatically install all plugins via lazy.nvim.
