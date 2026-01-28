@@ -12,13 +12,12 @@ return {
       return
     end
 
-    local treesitter = require("nvim-treesitter.configs")
-
-    treesitter.setup({
+    require("nvim-treesitter").setup({
       ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "clojure", "ruby", "commonlisp", "dockerfile", "bash", "markdown", "yaml", "json", "html", "javascript", "java" },
-      highlight = { enable = true, },
+      highlight = { enable = true },
       auto_install = true,
       indent = { enable = true },
+      autotag = { enable = true },
     })
   end,
 }
