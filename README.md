@@ -9,7 +9,6 @@ Use it well :)
 - `.aliases` - Shell aliases for development
 - `.functions` - Custom shell functions
 - `Brewfile` - Homebrew packages and applications
-- `.bash_profile_mac` (deprecated, kept for reference)
 
 ## Installation
 
