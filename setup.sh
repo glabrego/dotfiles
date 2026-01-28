@@ -44,9 +44,19 @@ else
 fi
 
 echo 'Setting up git configuration 📲'
-git config --global user.name 'Guilherme Labrego'
-git config --global user.email 'glabrego@gmail.com'
-git config --global core.editor nvim
+if [ -n "$GIT_USER_NAME" ] && [ -n "$GIT_USER_EMAIL" ]; then
+  git config --global user.name "$GIT_USER_NAME"
+  git config --global user.email "$GIT_USER_EMAIL"
+  git config --global core.editor nvim
+  echo "✓ Git configured with name: $GIT_USER_NAME"
+  echo "✓ Git configured with email: $GIT_USER_EMAIL"
+  echo "✓ Git editor set to: nvim"
+else
+  echo '⚠️  GIT_USER_NAME and GIT_USER_EMAIL not set in environment'
+  echo '   Skipping git configuration. Set these in your .zshrc:'
+  echo '   export GIT_USER_NAME="Your Name"'
+  echo '   export GIT_USER_EMAIL="your.email@example.com"'
+fi
 echo 'Done!'
 
 echo 'Cloning most needed repos 🗄'

@@ -2,6 +2,10 @@
 export PATH="/opt/homebrew/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 
+# Git configuration
+export GIT_USER_NAME="Guilherme Labrego"
+export GIT_USER_EMAIL="glabrego@gmail.com"
+
 # get my personalized functions and aliases
 source ~/.functions
 source ~/.aliases
