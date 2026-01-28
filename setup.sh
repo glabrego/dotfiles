@@ -75,6 +75,18 @@ else
   exit 1
 fi
 
+echo 'Setting up 1Password CLI 🔐'
+if command -v op &>/dev/null; then
+  if ! op account list &>/dev/null; then
+    echo '⚠️  1Password CLI not signed in. Sign in with: op signin'
+    echo '   (Skipping for now - you can sign in later)'
+  else
+    echo '1Password CLI already signed in ✓'
+  fi
+else
+  echo '⚠️  1Password CLI not installed yet. Will be available after brew bundle.'
+fi
+
 echo 'Setting ZSH as default shell 😎'
 ZSH_PATH="$(brew --prefix)/bin/zsh"
 CURRENT_SHELL="$(dscl . -read ~/ UserShell | awk '{print $2}')"

@@ -18,6 +18,9 @@ autoload -Uz compinit && compinit
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!.git/*" -g "!public/*" -g "!tmp/*" -g "!log/*" -g "!node_modules/*"'
 
+# SETUP 1Password CLI
+eval "$(op completion zsh)"; compdef _op op
+
 # SETUP Starship Prompt
 eval "$(starship init zsh)"
 
