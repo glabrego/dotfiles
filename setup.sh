@@ -54,6 +54,7 @@ ln -s ~/workspace/dotfiles/.aliases   ~/.aliases
 ln -s ~/workspace/dotfiles/.functions ~/.functions
 ln -s ~/workspace/dotfiles/.zshrc     ~/.zshrc
 ln -s ~/workspace/dotfiles/.tmux.conf ~/.tmux.conf
+ln -sf ~/workspace/dotfiles/starship.toml ~/.config/starship.toml
 echo 'Done!'
 
 echo 'Configuring Neovim ⌨️ '

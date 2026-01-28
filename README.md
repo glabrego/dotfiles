@@ -4,6 +4,7 @@ Use it well :)
 ## What's included?
 
 - `nvim/` - Neovim configuration (LazyVim-based)
+- `starship.toml` - Starship prompt configuration
 - `.tmux.conf` - Tmux configuration with plugins
 - `.zshrc` - Zsh shell configuration
 - `.aliases` - Shell aliases for development
@@ -23,7 +24,7 @@ The script will:
 2. Install all packages from Brewfile
 3. Set up Zsh as default shell
 4. Create symlinks for all configuration files
-5. Configure Neovim
+5. Configure Neovim and Starship
 
 ## Neovim Setup
 
@@ -40,3 +41,12 @@ This repository includes a complete Neovim configuration based on LazyVim. The s
 - Markview (markdown rendering)
 
 After running `setup.sh`, launch Neovim and it will automatically install all plugins via lazy.nvim.
+
+## Starship Prompt
+
+Custom Starship prompt configuration with Catppuccin Mocha theme. Features:
+- Username display
+- Directory path with truncation
+- Git branch and status
+- Current time
+- Vim mode indicators
