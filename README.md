@@ -1,6 +1,12 @@
 ## glabrego dotfiles
 Use it well :)
 
+## Prerequisites
+
+- macOS (Intel or Apple Silicon)
+- Command Line Tools (automatically installed by the setup script if missing)
+- SSH keys configured (optional, for cloning private repositories)
+
 ## What's included?
 
 - `nvim/` - Neovim configuration (LazyVim-based)
@@ -16,18 +22,32 @@ Use it well :)
 
 ## Installation
 
-Run the setup script to install everything:
+Clone this repository and run the setup script:
 
 ```sh
+git clone git@github.com:glabrego/dotfiles.git ~/workspace/dotfiles
+cd ~/workspace/dotfiles
 ./setup.sh
 ```
 
 The script will:
-1. Install Homebrew (if not already installed)
-2. Install all packages from Brewfile
-3. Set up Zsh as default shell
-4. Create symlinks for all configuration files
-5. Configure Neovim, Starship, Ghostty, Atuin, and Karabiner
+1. Check and install Command Line Tools (if needed)
+2. Add SSH keys to ssh-agent (if present)
+3. Install Homebrew (if not already installed)
+4. Create workspace directory
+5. Clone personal repositories
+6. Install all packages from Brewfile (112+ packages)
+7. Set up Zsh as default shell (with Apple Silicon support)
+8. Create symlinks for all configuration files
+9. Install Tmux plugins automatically via TPM
+10. Configure and install Neovim plugins automatically via Lazy.nvim
+11. Set up Ghostty, Atuin, and Karabiner configurations
+
+**Features:**
+- ✅ Idempotent - Safe to run multiple times
+- ✅ Works on both Intel and Apple Silicon Macs
+- ✅ Automatic error handling with graceful failures
+- ✅ No manual plugin installation needed
 
 ## Neovim Setup
 
@@ -43,7 +63,16 @@ This repository includes a complete Neovim configuration based on LazyVim. The s
 - Catppuccin theme
 - Markview (markdown rendering)
 
-After running `setup.sh`, launch Neovim and it will automatically install all plugins via lazy.nvim.
+The setup script automatically installs all plugins via lazy.nvim - no manual intervention needed!
+
+## Tmux Configuration
+
+Tmux multiplexer with automatic plugin installation via TPM:
+- **Theme:** Catppuccin Mocha
+- **Plugins:** tmux-sensible, tmux-autoreload, vim-tmux-navigator, tmux-battery
+- **Prefix:** Changed from C-b to C-a
+- **Split panes:** `/` for horizontal, `-` for vertical
+- **Vim mode:** Enabled with vi keybindings
 
 ## Starship Prompt
 
@@ -73,3 +102,30 @@ Karabiner keyboard customization configuration:
 - Caps Lock → Left Control
 - Fn → Hyper key (Command+Control+Option+Shift)
 - F1/F2 → Brightness controls
+
+## Troubleshooting
+
+### Command Line Tools Installation
+If the script exits asking you to install Command Line Tools:
+1. Complete the installation dialog that appears
+2. Wait for installation to finish (may take several minutes)
+3. Re-run `./setup.sh`
+
+### SSH Keys
+If you don't have SSH keys set up:
+```sh
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+Then add the public key to your GitHub account.
+
+### Script Fails During Homebrew Installation
+If Homebrew installation fails, you may need to:
+1. Check your internet connection
+2. Ensure you have enough disk space
+3. Run the script again (it's idempotent)
+
+### Re-running the Script
+The setup script is safe to run multiple times. It will:
+- Skip already installed packages
+- Update existing symlinks
+- Not re-clone existing repositories
