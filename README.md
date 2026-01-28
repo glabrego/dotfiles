@@ -6,6 +6,7 @@ Use it well :)
 - `nvim/` - Neovim configuration (LazyVim-based)
 - `ghostty/` - Ghostty terminal configuration
 - `atuin/` - Atuin shell history configuration
+- `karabiner/` - Karabiner keyboard customization
 - `starship.toml` - Starship prompt configuration
 - `.tmux.conf` - Tmux configuration with plugins
 - `.zshrc` - Zsh shell configuration
@@ -26,7 +27,7 @@ The script will:
 2. Install all packages from Brewfile
 3. Set up Zsh as default shell
 4. Create symlinks for all configuration files
-5. Configure Neovim, Starship, Ghostty, and Atuin
+5. Configure Neovim, Starship, Ghostty, Atuin, and Karabiner
 
 ## Neovim Setup
 
@@ -65,3 +66,10 @@ Atuin shell history configuration:
 - Compact UI style
 - Disabled enter_accept (tab to edit before executing)
 - Sync v2 enabled
+
+## Karabiner Elements
+
+Karabiner keyboard customization configuration:
+- Caps Lock → Left Control
+- Fn → Hyper key (Command+Control+Option+Shift)
+- F1/F2 → Brightness controls

@@ -76,3 +76,7 @@ echo 'Configuring Atuin shell history 📜'
 ln -sf ~/workspace/dotfiles/atuin ~/.config/atuin
 echo 'Done!'
 
+echo 'Configuring Karabiner keyboard customization ⌨️ '
+ln -sf ~/workspace/dotfiles/karabiner ~/.config/karabiner
+echo 'Done!'
+
