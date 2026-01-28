@@ -62,3 +62,7 @@ mkdir -p ~/.config/
 ln -sf ~/workspace/dotfiles/nvim ~/.config/nvim
 echo 'Done!'
 
+echo 'Configuring Ghostty terminal 👻'
+ln -sf ~/workspace/dotfiles/ghostty ~/.config/ghostty
+echo 'Done!'
+

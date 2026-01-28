@@ -4,6 +4,7 @@ Use it well :)
 ## What's included?
 
 - `nvim/` - Neovim configuration (LazyVim-based)
+- `ghostty/` - Ghostty terminal configuration
 - `starship.toml` - Starship prompt configuration
 - `.tmux.conf` - Tmux configuration with plugins
 - `.zshrc` - Zsh shell configuration
@@ -24,7 +25,7 @@ The script will:
 2. Install all packages from Brewfile
 3. Set up Zsh as default shell
 4. Create symlinks for all configuration files
-5. Configure Neovim and Starship
+5. Configure Neovim, Starship, and Ghostty
 
 ## Neovim Setup
 
@@ -50,3 +51,9 @@ Custom Starship prompt configuration with Catppuccin Mocha theme. Features:
 - Git branch and status
 - Current time
 - Vim mode indicators
+
+## Ghostty Terminal
+
+Ghostty terminal emulator configuration:
+- JetBrainsMono Nerd Font Mono (size 15)
+- Catppuccin Mocha theme
