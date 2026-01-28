@@ -19,6 +19,8 @@ Use it well :)
 - `.aliases` - Shell aliases for development
 - `.functions` - Custom shell functions
 - `Brewfile` - Homebrew packages and applications
+- `setup.sh` - Installation script
+- `update.sh` - Update script for maintaining tools and configs
 
 ## Installation
 
@@ -42,12 +44,59 @@ The script will:
 9. Install Tmux plugins automatically via TPM
 10. Configure and install Neovim plugins automatically via Lazy.nvim
 11. Set up Ghostty, Atuin, and Karabiner configurations
+12. Configure macOS system defaults
+13. Verify installation and show results
 
 **Features:**
 - ✅ Idempotent - Safe to run multiple times
 - ✅ Works on both Intel and Apple Silicon Macs
 - ✅ Automatic error handling with graceful failures
 - ✅ No manual plugin installation needed
+- ✅ Post-install verification with clear results
+
+## Updating
+
+Keep your dotfiles and tools up to date:
+
+```sh
+cd ~/workspace/dotfiles
+./update.sh
+```
+
+The update script will:
+- Pull latest dotfiles from git
+- Update Homebrew and all packages
+- Update Tmux plugins via TPM
+- Update Neovim plugins via Lazy.nvim
+- Sync Atuin shell history
+- Clean up Homebrew cache
+
+## macOS System Defaults
+
+The setup script configures sensible macOS defaults:
+
+**Keyboard:**
+- Faster key repeat rate
+- Shorter initial key repeat delay
+
+**Finder:**
+- Show hidden files
+- Show path bar and status bar
+- Show full POSIX path in title
+
+**Dock:**
+- Auto-hide enabled
+- Hide recent applications
+- Minimize windows to application icon
+
+**Screenshots:**
+- Save to Desktop as PNG
+- Disable shadows
+
+**Trackpad:**
+- Tap to click enabled
+
+These settings take effect immediately (affected apps are restarted automatically).
 
 ## Neovim Setup
 
