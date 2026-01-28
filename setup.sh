@@ -64,6 +64,8 @@ echo 'Done!'
 echo 'Configuring Neovim ⌨️ '
 mkdir -p ~/.config/
 ln -sf ~/workspace/dotfiles/nvim ~/.config/nvim
+echo 'Installing Neovim plugins...'
+nvim --headless "+Lazy! sync" +qa
 echo 'Done!'
 
 echo 'Configuring Ghostty terminal 👻'
