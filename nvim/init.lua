@@ -23,29 +23,9 @@ vim.g.maplocalleader = ","
 require("lazy").setup({
   { import = 'plugins' },
   checker = { enabled = true },
-
-  {'tpope/vim-surround'},
-  {'tpope/vim-commentary'},
-  {'Raimondi/delimitMate'},
-  {'christoomey/vim-tmux-navigator'},
-  {'nvim-lualine/lualine.nvim'},
-  {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
-  {'tpope/vim-repeat'},
-  {'tmhedberg/matchit'},
-  {'Olical/conjure'},
-  {'williamboman/mason.nvim'},
 })
 
 vim.cmd.colorscheme "catppuccin"
 
 require('config.defaults')
 require('config.remaps')
-
--- lualine setup
-require('lualine').setup()
-
--- bufferline setup
-require('bufferline').setup()
-
--- mason setup
-require('mason').setup()

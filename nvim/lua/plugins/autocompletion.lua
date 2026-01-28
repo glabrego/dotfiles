@@ -9,6 +9,10 @@ return {"hrsh7th/nvim-cmp", dependencies = {"hrsh7th/cmp-buffer", "hrsh7th/cmp-n
 
     local cmp = require("cmp")
     local luasnip = require("luasnip")
+
+    -- Integrate autopairs with cmp
+    local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+    cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
     local function _2_(entry, item)
       item.menu = (cmp_src_menu_items[entry.source.name] or "")
       return item
