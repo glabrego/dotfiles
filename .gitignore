@@ -10,3 +10,4 @@
 
 # Lock files
 Brewfile.lock.json
+nvim/lazy-lock.json
