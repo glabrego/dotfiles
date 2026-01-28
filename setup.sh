@@ -106,24 +106,24 @@ echo 'Configuring Neovim ⌨️ '
 mkdir -p ~/.config/
 # Remove if exists and is not a symlink
 [ -d ~/.config/nvim ] && [ ! -L ~/.config/nvim ] && rm -rf ~/.config/nvim
-ln -sf ~/workspace/dotfiles/nvim ~/.config/nvim
+ln -sfn ~/workspace/dotfiles/nvim ~/.config/nvim
 echo 'Installing Neovim plugins...'
 nvim --headless "+Lazy! sync" +qa
 echo 'Done!'
 
 echo 'Configuring Ghostty terminal 👻'
 [ -d ~/.config/ghostty ] && [ ! -L ~/.config/ghostty ] && rm -rf ~/.config/ghostty
-ln -sf ~/workspace/dotfiles/ghostty ~/.config/ghostty
+ln -sfn ~/workspace/dotfiles/ghostty ~/.config/ghostty
 echo 'Done!'
 
 echo 'Configuring Atuin shell history 📜'
 [ -d ~/.config/atuin ] && [ ! -L ~/.config/atuin ] && rm -rf ~/.config/atuin
-ln -sf ~/workspace/dotfiles/atuin ~/.config/atuin
+ln -sfn ~/workspace/dotfiles/atuin ~/.config/atuin
 echo 'Done!'
 
 echo 'Configuring Karabiner keyboard customization ⌨️ '
 [ -d ~/.config/karabiner ] && [ ! -L ~/.config/karabiner ] && rm -rf ~/.config/karabiner
-ln -sf ~/workspace/dotfiles/karabiner ~/.config/karabiner
+ln -sfn ~/workspace/dotfiles/karabiner ~/.config/karabiner
 echo 'Done!'
 
 echo 'Setting macOS defaults ⚙️ '
