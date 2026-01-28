@@ -1,0 +1,9 @@
+# Claude Code CLI
+.claude/
+
+# macOS
+.DS_Store
+
+# Editor directories
+.vscode/
+.idea/
