@@ -1,5 +1,3 @@
-vim.deprecate = function() end
-
 -- lazy.vim plugin manager setup
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -21,7 +19,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 require("lazy").setup({
-  { import = 'plugins' },
+  spec = {
+    { import = 'plugins' },
+  },
   checker = { enabled = true },
 })
 
