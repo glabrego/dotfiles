@@ -77,10 +77,17 @@ fi
 
 echo 'Setting ZSH as default shell 😎'
 ZSH_PATH="$(brew --prefix)/bin/zsh"
-if ! grep -q "$ZSH_PATH" /etc/shells; then
-  sudo sh -c "echo '$ZSH_PATH' >> /etc/shells"
+CURRENT_SHELL="$(dscl . -read ~/ UserShell | awk '{print $2}')"
+
+if [ "$CURRENT_SHELL" = "$ZSH_PATH" ]; then
+  echo 'Zsh is already the default shell ✓'
+else
+  if ! grep -q "$ZSH_PATH" /etc/shells; then
+    sudo sh -c "echo '$ZSH_PATH' >> /etc/shells"
+  fi
+  chsh -s "$ZSH_PATH"
+  echo 'Default shell changed to Zsh!'
 fi
-chsh -s "$ZSH_PATH"
 echo 'Done!'
 
 echo 'Symlinking dotfiles 🔗'
