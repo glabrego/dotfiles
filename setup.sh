@@ -2,6 +2,63 @@
 set -e  # Exit on error for critical commands
 
 # ============================================================================
+# Help and Usage
+# ============================================================================
+
+show_help() {
+  cat << EOF
+Dotfiles Setup Script
+
+DESCRIPTION:
+  Automated setup script for fresh macOS installations. Installs and configures
+  development environment including Homebrew, Git, Zsh, Neovim, Tmux, and various
+  CLI tools with personalized configurations.
+
+USAGE:
+  ./setup.sh [OPTIONS]
+
+OPTIONS:
+  -h, --help    Show this help message and exit
+
+PREREQUISITES:
+  - macOS (Apple Silicon or Intel)
+  - Internet connection
+  - Admin/sudo access (for some operations)
+
+ENVIRONMENT VARIABLES:
+  GIT_USER_NAME     Your git user name (optional, can be set in .zshrc)
+  GIT_USER_EMAIL    Your git email (optional, can be set in .zshrc)
+
+WHAT IT DOES:
+  1.  Checks for Command Line Tools (installs if missing)
+  2.  Adds SSH keys to ssh-agent
+  3.  Installs Homebrew package manager
+  4.  Creates ~/workspace directory
+  5.  Installs and configures Git
+  6.  Clones essential repositories
+  7.  Installs packages via Homebrew Bundle
+  8.  Sets up GitHub CLI authentication
+  9.  Sets up 1Password CLI
+  10. Sets Zsh as default shell
+  11. Symlinks dotfiles to home directory
+  12. Installs Tmux plugins
+  13. Configures Neovim and installs plugins
+  14. Configures Ghostty terminal
+  15. Configures Atuin shell history
+  16. Configures Karabiner keyboard customization
+  17. Sets macOS system defaults
+  18. Verifies installation
+
+EXAMPLES:
+  ./setup.sh          Run the full setup
+  ./setup.sh --help   Show this help message
+
+For more information, visit: https://github.com/glabrego/dotfiles
+EOF
+  exit 0
+}
+
+# ============================================================================
 # Helper Functions
 # ============================================================================
 
@@ -314,6 +371,22 @@ main() {
     exit 1
   fi
 }
+
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -h|--help)
+      show_help
+      ;;
+    *)
+      echo "Unknown option: $1"
+      echo "Use --help for usage information"
+      exit 1
+      ;;
+  esac
+  # shellcheck disable=SC2317
+  shift
+done
 
 # Run main function
 main
