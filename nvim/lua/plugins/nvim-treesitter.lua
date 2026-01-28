@@ -7,6 +7,11 @@ return {
     "windwp/nvim-ts-autotag",
   },
   config = function()
+    -- Skip treesitter setup in headless mode to avoid compilation errors
+    if #vim.api.nvim_list_uis() == 0 then
+      return
+    end
+
     local treesitter = require("nvim-treesitter.configs")
 
     treesitter.setup({
