@@ -14,8 +14,8 @@ else
 fi
 
 echo 'Creating workspace dir 📁'
-mkdir ~/workspace
-echo '~/workspace created!'
+mkdir -p ~/workspace
+echo '~/workspace ready!'
 
 echo 'Installing Git 🎒'
 if command -v git >/dev/null 2>&1; then
