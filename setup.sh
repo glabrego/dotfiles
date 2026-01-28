@@ -45,8 +45,11 @@ cd ~/workspace/dotfiles && brew bundle
 echo 'Done!'
 
 echo 'Setting ZSH as default shell 😎'
-sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
-chsh -s /usr/local/bin/zsh
+ZSH_PATH="$(brew --prefix)/bin/zsh"
+if ! grep -q "$ZSH_PATH" /etc/shells; then
+  sudo sh -c "echo '$ZSH_PATH' >> /etc/shells"
+fi
+chsh -s "$ZSH_PATH"
 echo 'Done!'
 
 echo 'Symlinking dotfiles 🔗'
