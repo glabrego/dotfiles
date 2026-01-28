@@ -33,7 +33,7 @@ fi
 
 echo 'Creating workspace dir 📁'
 mkdir -p ~/workspace
-echo '~/workspace ready!'
+echo 'Workspace directory ready!'
 
 echo 'Installing Git 🎒'
 if command -v git >/dev/null 2>&1; then
