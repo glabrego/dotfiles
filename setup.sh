@@ -50,17 +50,30 @@ git config --global core.editor nvim
 echo 'Done!'
 
 echo 'Cloning most needed repos 🗄'
-[ ! -d ~/workspace/dotfiles ] && git clone git@github.com:glabrego/dotfiles.git ~/workspace/dotfiles || true &
-[ ! -d ~/workspace/my-changelog ] && git clone git@github.com:glabrego/my-changelog.git ~/workspace/my-changelog || true &
-[ ! -d ~/workspace/glabrego.github.io ] && git clone git@github.com:glabrego/glabrego.github.io.git ~/workspace/glabrego.github.io || true &
-[ ! -d ~/workspace/glabrego-codes ] && git clone git@github.com:glabrego/glabrego-codes.git ~/workspace/glabrego-codes || true &
-[ ! -d ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true &
+[ ! -d ~/workspace/dotfiles ] && gh repo clone glabrego/dotfiles ~/workspace/dotfiles || true &
+[ ! -d ~/workspace/my-changelog ] && gh repo clone glabrego/my-changelog ~/workspace/my-changelog || true &
+[ ! -d ~/workspace/glabrego.github.io ] && gh repo clone glabrego/glabrego.github.io ~/workspace/glabrego.github.io || true &
+[ ! -d ~/workspace/glabrego-codes ] && gh repo clone glabrego/glabrego-codes ~/workspace/glabrego-codes || true &
+[ ! -d ~/.tmux/plugins/tpm ] && gh repo clone tmux-plugins/tpm ~/.tmux/plugins/tpm || true &
 wait
 echo 'Done!'
 
 echo 'Bundling Homebrew ☕️'
 cd ~/workspace/dotfiles && brew bundle
 echo 'Done!'
+
+echo 'Setting up GitHub CLI 🔑'
+if command -v gh &>/dev/null; then
+  if ! gh auth status &>/dev/null; then
+    echo '⚠️  GitHub CLI not authenticated. Attempting login...'
+    gh auth login
+  else
+    echo 'GitHub CLI already authenticated ✓'
+  fi
+else
+  echo '⚠️  GitHub CLI (gh) not found. Install it with: brew install gh'
+  exit 1
+fi
 
 echo 'Setting ZSH as default shell 😎'
 ZSH_PATH="$(brew --prefix)/bin/zsh"
