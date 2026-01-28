@@ -3,6 +3,18 @@ set -e  # Exit on error for critical commands
 
 echo '👨🏻‍💻  Setting everythin up 🤓'
 
+echo 'Checking Command Line Tools 🛠️'
+if ! xcode-select -p &>/dev/null; then
+  echo 'Command Line Tools not found. Installing...'
+  xcode-select --install
+  echo ''
+  echo '⚠️  Please complete the Command Line Tools installation dialog.'
+  echo '⚠️  After installation completes, re-run this script: ./setup.sh'
+  exit 0
+else
+  echo 'Command Line Tools already installed ✓'
+fi
+
 echo 'Adding git keys to ssh-agent 🕵'
 if [ -f ~/.ssh/id_rsa ]; then
   ssh-add -K ~/.ssh/id_rsa || echo '⚠️  Warning: Could not add SSH key to agent'
