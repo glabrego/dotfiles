@@ -53,10 +53,10 @@ chsh -s "$ZSH_PATH"
 echo 'Done!'
 
 echo 'Symlinking dotfiles 🔗'
-ln -s ~/workspace/dotfiles/.aliases   ~/.aliases
-ln -s ~/workspace/dotfiles/.functions ~/.functions
-ln -s ~/workspace/dotfiles/.zshrc     ~/.zshrc
-ln -s ~/workspace/dotfiles/.tmux.conf ~/.tmux.conf
+ln -sf ~/workspace/dotfiles/.aliases   ~/.aliases
+ln -sf ~/workspace/dotfiles/.functions ~/.functions
+ln -sf ~/workspace/dotfiles/.zshrc     ~/.zshrc
+ln -sf ~/workspace/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/workspace/dotfiles/starship.toml ~/.config/starship.toml
 echo 'Done!'
 
