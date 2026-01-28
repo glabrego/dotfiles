@@ -1,9 +1,11 @@
 #! /bin/bash
+set -e  # Exit on error for critical commands
+
 echo '👨🏻‍💻  Setting everythin up 🤓'
 
 echo 'Adding git keys to ssh-agent 🕵'
 if [ -f ~/.ssh/id_rsa ]; then
-  ssh-add -K ~/.ssh/id_rsa
+  ssh-add -K ~/.ssh/id_rsa || echo '⚠️  Warning: Could not add SSH key to agent'
   echo 'SSH key added!'
 else
   echo 'No SSH key found at ~/.ssh/id_rsa, skipping...'
@@ -36,11 +38,11 @@ git config --global core.editor nvim
 echo 'Done!'
 
 echo 'Cloning most needed repos 🗄'
-[ ! -d ~/workspace/dotfiles ] && git clone git@github.com:glabrego/dotfiles.git ~/workspace/dotfiles &
-[ ! -d ~/workspace/my-changelog ] && git clone git@github.com:glabrego/my-changelog.git ~/workspace/my-changelog &
-[ ! -d ~/workspace/glabrego.github.io ] && git clone git@github.com:glabrego/glabrego.github.io.git ~/workspace/glabrego.github.io &
-[ ! -d ~/workspace/glabrego-codes ] && git clone git@github.com:glabrego/glabrego-codes.git ~/workspace/glabrego-codes &
-[ ! -d ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm &
+[ ! -d ~/workspace/dotfiles ] && git clone git@github.com:glabrego/dotfiles.git ~/workspace/dotfiles || true &
+[ ! -d ~/workspace/my-changelog ] && git clone git@github.com:glabrego/my-changelog.git ~/workspace/my-changelog || true &
+[ ! -d ~/workspace/glabrego.github.io ] && git clone git@github.com:glabrego/glabrego.github.io.git ~/workspace/glabrego.github.io || true &
+[ ! -d ~/workspace/glabrego-codes ] && git clone git@github.com:glabrego/glabrego-codes.git ~/workspace/glabrego-codes || true &
+[ ! -d ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true &
 wait
 echo 'Done!'
 
