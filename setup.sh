@@ -32,11 +32,11 @@ git config --global core.editor nvim
 echo 'Done!'
 
 echo 'Cloning most needed repos 🗄'
-git clone git@github.com:glabrego/dotfiles.git ~/workspace/dotfiles &
-git clone git@github.com:glabrego/my-changelog.git ~/workspace/my-changelog &
-git clone git@github.com:glabrego/glabrego.github.io.git ~/workspace/glabrego.github.io &
-git clone git@github.com:glabrego/glabrego-codes.git ~/workspace/glabrego-codes &
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm &
+[ ! -d ~/workspace/dotfiles ] && git clone git@github.com:glabrego/dotfiles.git ~/workspace/dotfiles &
+[ ! -d ~/workspace/my-changelog ] && git clone git@github.com:glabrego/my-changelog.git ~/workspace/my-changelog &
+[ ! -d ~/workspace/glabrego.github.io ] && git clone git@github.com:glabrego/glabrego.github.io.git ~/workspace/glabrego.github.io &
+[ ! -d ~/workspace/glabrego-codes ] && git clone git@github.com:glabrego/glabrego-codes.git ~/workspace/glabrego-codes &
+[ ! -d ~/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm &
 wait
 echo 'Done!'
 
