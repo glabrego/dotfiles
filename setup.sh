@@ -101,3 +101,62 @@ echo 'Configuring Karabiner keyboard customization ⌨️ '
 ln -sf ~/workspace/dotfiles/karabiner ~/.config/karabiner
 echo 'Done!'
 
+echo ''
+echo '🔍 Verifying installation...'
+echo ''
+
+# Check critical tools
+VERIFICATION_FAILED=0
+
+check_command() {
+  if command -v "$1" &>/dev/null; then
+    echo "✅ $2"
+  else
+    echo "❌ $2 - NOT FOUND"
+    VERIFICATION_FAILED=1
+  fi
+}
+
+check_file() {
+  if [ -e "$1" ]; then
+    echo "✅ $2"
+  else
+    echo "❌ $2 - NOT FOUND"
+    VERIFICATION_FAILED=1
+  fi
+}
+
+# Core tools
+check_command "brew" "Homebrew"
+check_command "git" "Git"
+check_command "zsh" "Zsh"
+check_command "nvim" "Neovim"
+check_command "tmux" "Tmux"
+check_command "starship" "Starship"
+check_command "atuin" "Atuin"
+
+# Symlinks
+check_file ~/.zshrc "Zsh config"
+check_file ~/.tmux.conf "Tmux config"
+check_file ~/.aliases "Shell aliases"
+check_file ~/.functions "Shell functions"
+check_file ~/.config/nvim "Neovim config"
+check_file ~/.config/starship.toml "Starship config"
+check_file ~/.config/ghostty "Ghostty config"
+check_file ~/.config/atuin "Atuin config"
+check_file ~/.config/karabiner "Karabiner config"
+check_file ~/.tmux/plugins/tpm "Tmux Plugin Manager"
+
+echo ''
+if [ $VERIFICATION_FAILED -eq 0 ]; then
+  echo '🎉 Setup completed successfully!'
+  echo ''
+  echo 'Next steps:'
+  echo '  1. Restart your terminal or run: source ~/.zshrc'
+  echo '  2. Open Neovim to verify plugins loaded correctly'
+  echo '  3. Open Tmux to verify theme and plugins'
+else
+  echo '⚠️  Setup completed with some issues. Please review the items marked with ❌'
+  exit 1
+fi
+
