@@ -5,6 +5,7 @@ Use it well :)
 
 - `nvim/` - Neovim configuration (LazyVim-based)
 - `ghostty/` - Ghostty terminal configuration
+- `atuin/` - Atuin shell history configuration
 - `starship.toml` - Starship prompt configuration
 - `.tmux.conf` - Tmux configuration with plugins
 - `.zshrc` - Zsh shell configuration
@@ -25,7 +26,7 @@ The script will:
 2. Install all packages from Brewfile
 3. Set up Zsh as default shell
 4. Create symlinks for all configuration files
-5. Configure Neovim, Starship, and Ghostty
+5. Configure Neovim, Starship, Ghostty, and Atuin
 
 ## Neovim Setup
 
@@ -57,3 +58,10 @@ Custom Starship prompt configuration with Catppuccin Mocha theme. Features:
 Ghostty terminal emulator configuration:
 - JetBrainsMono Nerd Font Mono (size 15)
 - Catppuccin Mocha theme
+
+## Atuin Shell History
+
+Atuin shell history configuration:
+- Compact UI style
+- Disabled enter_accept (tab to edit before executing)
+- Sync v2 enabled

@@ -72,3 +72,7 @@ echo 'Configuring Ghostty terminal 👻'
 ln -sf ~/workspace/dotfiles/ghostty ~/.config/ghostty
 echo 'Done!'
 
+echo 'Configuring Atuin shell history 📜'
+ln -sf ~/workspace/dotfiles/atuin ~/.config/atuin
+echo 'Done!'
+
