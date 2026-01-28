@@ -57,6 +57,10 @@ ln -s ~/workspace/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/workspace/dotfiles/starship.toml ~/.config/starship.toml
 echo 'Done!'
 
+echo 'Installing Tmux plugins 🔌'
+~/.tmux/plugins/tpm/bin/install_plugins
+echo 'Done!'
+
 echo 'Configuring Neovim ⌨️ '
 mkdir -p ~/.config/
 ln -sf ~/workspace/dotfiles/nvim ~/.config/nvim
