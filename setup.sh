@@ -101,6 +101,35 @@ echo 'Configuring Karabiner keyboard customization ⌨️ '
 ln -sf ~/workspace/dotfiles/karabiner ~/.config/karabiner
 echo 'Done!'
 
+echo 'Setting macOS defaults ⚙️ '
+# Keyboard
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+
+# Finder
+defaults write com.apple.finder AppleShowAllFiles -bool true
+defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.finder ShowStatusBar -bool true
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+
+# Dock
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock show-recents -bool false
+defaults write com.apple.dock minimize-to-application -bool true
+
+# Screenshots
+defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+defaults write com.apple.screencapture type -string "png"
+defaults write com.apple.screencapture disable-shadow -bool true
+
+# Trackpad
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# Restart affected apps
+killall Finder Dock SystemUIServer &>/dev/null || true
+echo 'Done!'
+
 echo ''
 echo '🔍 Verifying installation...'
 echo ''
