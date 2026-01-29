@@ -50,7 +50,12 @@ return {
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
     end
+
     local capabilities = cmp_nvim_lsp.default_capabilities()
+    -- Set default position encoding for Neovim 0.11 compatibility
+    capabilities.offsetEncoding = { 'utf-16', 'utf-8' }
+    capabilities.general = capabilities.general or {}
+    capabilities.general.positionEncodings = { 'utf-16', 'utf-8' }
 
     local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
     for type, icon in pairs(signs) do
