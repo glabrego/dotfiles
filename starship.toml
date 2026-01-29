@@ -37,6 +37,17 @@ format = '[ $symbol $branch ]($style)'
 [git_status]
 style = "fg:text bg:surface2"
 format = '[$all_status$ahead_behind ]($style)'
+conflicted = " 󰞇"
+ahead = " ⇡${count}"
+behind = " ⇣${count}"
+diverged = " ⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date = ""
+untracked = " 󰋗${count}"
+stashed = " ${count}"
+modified = " 󱗜${count}"
+staged = " 󰄲${count}"
+renamed = " 󰑕${count}"
+deleted = " 󰆴${count}"
 
 [time]
 disabled = false
