@@ -1,6 +1,11 @@
 return {
   'neovim/nvim-lspconfig', event = {'BufReadPre', 'BufNewFile'},
   config = function()
+    -- Temporarily suppress lspconfig deprecation warnings
+    -- The plugin will update to new vim.lsp.config API in v3.0.0
+    local deprecate = vim.deprecate
+    vim.deprecate = function() end
+
     local lspconfig = require('lspconfig')
     local cmp_nvim_lsp = require('cmp_nvim_lsp')
     local keymap = vim.keymap
@@ -58,29 +63,23 @@ return {
       ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = "single"}),
       ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = "single"})
     }
-    local function f(params)
-      params.wordDoneToken = "1"
-      return nil
-    end
-    local before_init = f
+    -- Clojure LSP setup
     lspconfig.clojure_lsp.setup({
       capabilities = capabilities,
       on_attach = on_attach,
       handlers = handlers,
-      before_init = before_init
     })
 
-    lspconfig["lua_ls"].setup({
+    -- Lua LSP setup
+    lspconfig.lua_ls.setup({
       capabilities = capabilities,
       on_attach = on_attach,
-      settings = { -- custom settings for lua
+      settings = {
         Lua = {
-          -- make the language server recognize "vim" global
           diagnostics = {
             globals = { "vim" },
           },
           workspace = {
-            -- make language server aware of runtime files
             library = {
               [vim.fn.expand("$VIMRUNTIME/lua")] = true,
               [vim.fn.stdpath("config") .. "/lua"] = true,
@@ -89,5 +88,8 @@ return {
         },
       },
     })
+
+    -- Restore original deprecate function
+    vim.deprecate = deprecate
   end
 }
