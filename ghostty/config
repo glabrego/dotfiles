@@ -4,3 +4,9 @@ theme = dark:Catppuccin Mocha, light:Catppuccin Mocha
 
 # Performance optimizations
 sync-updates = true
+
+# Terminal features
+shell-integration = detect
+shell-integration-features = cursor,sudo,title
+scrollback-limit = 10000
+copy-on-select = clipboard
