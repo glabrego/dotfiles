@@ -6,6 +6,24 @@ return {
     local deprecate = vim.deprecate
     vim.deprecate = function() end
 
+    -- Fix position_encoding warnings in Neovim 0.11
+    -- Wrap LSP utility functions to default to utf-16 encoding
+    local util = vim.lsp.util
+    local original_make_position_params = util.make_position_params
+    util.make_position_params = function(window, offset_encoding)
+      return original_make_position_params(window, offset_encoding or 'utf-16')
+    end
+
+    local original_make_range_params = util.make_range_params
+    util.make_range_params = function(window, offset_encoding)
+      return original_make_range_params(window, offset_encoding or 'utf-16')
+    end
+
+    local original_make_given_range_params = util.make_given_range_params
+    util.make_given_range_params = function(start_pos, end_pos, bufnr, offset_encoding)
+      return original_make_given_range_params(start_pos, end_pos, bufnr, offset_encoding or 'utf-16')
+    end
+
     local lspconfig = require('lspconfig')
     local cmp_nvim_lsp = require('cmp_nvim_lsp')
     local keymap = vim.keymap
