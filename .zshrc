@@ -36,8 +36,8 @@ eval "$(zoxide init zsh)"
 
 # Feedbin CLI credentials (1Password)
 # Feedbin email is stored in the "username" field.
-export OP_FEEDBIN_USERNAME_REF="${OP_FEEDBIN_USERNAME_REF:-op://Private/Feedbin/username}"
-export OP_FEEDBIN_PASSWORD_REF="${OP_FEEDBIN_PASSWORD_REF:-op://Private/Feedbin/password}"
+export OP_FEEDBIN_USERNAME_REF="${OP_FEEDBIN_USERNAME_REF:-op://Personal/Feedbin/username}"
+export OP_FEEDBIN_PASSWORD_REF="${OP_FEEDBIN_PASSWORD_REF:-op://Personal/Feedbin/password}"
 export OP_FEEDBIN_CACHE_FILE="${OP_FEEDBIN_CACHE_FILE:-${XDG_CACHE_HOME:-$HOME/.cache}/feedbin.env}"
 export OP_FEEDBIN_CACHE_TTL="${OP_FEEDBIN_CACHE_TTL:-2592000}" # 30d
 
