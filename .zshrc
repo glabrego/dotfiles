@@ -56,7 +56,7 @@ feedbin_cache_is_fresh() {
   (( now - mtime < OP_FEEDBIN_CACHE_TTL ))
 }
 
-if ! (feedbin_cache_is_fresh && feedbin_load_from_cache); then
+if ! { feedbin_cache_is_fresh && feedbin_load_from_cache; }; then
   if command -v op >/dev/null 2>&1; then
     feedbin_username="$(op read "$OP_FEEDBIN_USERNAME_REF" 2>/dev/null)"
     feedbin_password="$(op read "$OP_FEEDBIN_PASSWORD_REF" 2>/dev/null)"
