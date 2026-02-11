@@ -38,3 +38,80 @@ function postgres_username { ruby -e 'require "yaml"; p YAML.load(File.read("con
 function postgres_password { ruby -e 'require "yaml"; p YAML.load(File.read("config/database.yml"))["defaults"]["password"]' }
 
 function ask { claude -p "$*"}
+
+function op_env_cache_is_fresh() {
+  local cache_file="$1"
+  local cache_ttl="$2"
+  [[ -r "$cache_file" ]] || return 1
+
+  local now mtime
+  now="$(date +%s)"
+  mtime="$(stat -f %m "$cache_file" 2>/dev/null || stat -c %Y "$cache_file" 2>/dev/null)" || return 1
+  (( now - mtime < cache_ttl ))
+}
+
+function op_env_load_from_cache() {
+  local cache_file="$1"
+  shift
+
+  [[ -r "$cache_file" ]] || return 1
+  # shellcheck disable=SC1090
+  source "$cache_file"
+
+  local var_name
+  for var_name in "$@"; do
+    [[ -n "${(P)var_name}" ]] || return 1
+  done
+}
+
+# Usage:
+# op_env_setup <cache_file> <cache_ttl_seconds> VAR_NAME=op://vault/item/field [MORE...]
+function op_env_setup() {
+  local cache_file="$1"
+  local cache_ttl="$2"
+  shift 2
+
+  (( $# > 0 )) || return 1
+
+  local mapping var_name op_ref
+  local -a var_names=()
+  for mapping in "$@"; do
+    var_name="${mapping%%=*}"
+    op_ref="${mapping#*=}"
+    [[ -n "$var_name" && -n "$op_ref" && "$mapping" == *"="* ]] || continue
+    var_names+=("$var_name")
+  done
+
+  if op_env_cache_is_fresh "$cache_file" "$cache_ttl" && op_env_load_from_cache "$cache_file" "${var_names[@]}"; then
+    return 0
+  fi
+
+  command -v op >/dev/null 2>&1 || return 1
+
+  local fetched_value
+  local all_present=1
+  for mapping in "$@"; do
+    var_name="${mapping%%=*}"
+    op_ref="${mapping#*=}"
+    [[ -n "$var_name" && -n "$op_ref" && "$mapping" == *"="* ]] || continue
+
+    fetched_value="$(op read "$op_ref" 2>/dev/null)"
+    if [[ -n "$fetched_value" ]]; then
+      export "$var_name=$fetched_value"
+    fi
+  done
+
+  for var_name in "${var_names[@]}"; do
+    [[ -n "${(P)var_name}" ]] || all_present=0
+  done
+
+  if (( all_present )); then
+    mkdir -p "$(dirname "$cache_file")"
+    umask 077
+    {
+      for var_name in "${var_names[@]}"; do
+        printf "export %s=%q\n" "$var_name" "${(P)var_name}"
+      done
+    } > "$cache_file"
+  fi
+}

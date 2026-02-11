@@ -41,43 +41,6 @@ export OP_FEEDBIN_PASSWORD_REF="${OP_FEEDBIN_PASSWORD_REF:-op://Personal/Feedbin
 export OP_FEEDBIN_CACHE_FILE="${OP_FEEDBIN_CACHE_FILE:-${XDG_CACHE_HOME:-$HOME/.cache}/feedbin.env}"
 export OP_FEEDBIN_CACHE_TTL="${OP_FEEDBIN_CACHE_TTL:-2592000}" # 30d
 
-feedbin_load_from_cache() {
-  [[ -r "$OP_FEEDBIN_CACHE_FILE" ]] || return 1
-  # shellcheck disable=SC1090
-  source "$OP_FEEDBIN_CACHE_FILE"
-  [[ -n "$FEEDBIN_EMAIL" && -n "$FEEDBIN_PASSWORD" ]]
-}
-
-feedbin_cache_is_fresh() {
-  [[ -r "$OP_FEEDBIN_CACHE_FILE" ]] || return 1
-  local now mtime
-  now="$(date +%s)"
-  mtime="$(stat -f %m "$OP_FEEDBIN_CACHE_FILE" 2>/dev/null || stat -c %Y "$OP_FEEDBIN_CACHE_FILE" 2>/dev/null)" || return 1
-  (( now - mtime < OP_FEEDBIN_CACHE_TTL ))
-}
-
-if ! { feedbin_cache_is_fresh && feedbin_load_from_cache; }; then
-  if command -v op >/dev/null 2>&1; then
-    feedbin_username="$(op read "$OP_FEEDBIN_USERNAME_REF" 2>/dev/null)"
-    feedbin_password="$(op read "$OP_FEEDBIN_PASSWORD_REF" 2>/dev/null)"
-
-    if [[ -n "$feedbin_username" ]]; then
-      export FEEDBIN_EMAIL="$feedbin_username"
-    fi
-
-    if [[ -n "$feedbin_password" ]]; then
-      export FEEDBIN_PASSWORD="$feedbin_password"
-    fi
-
-    if [[ -n "$FEEDBIN_EMAIL" && -n "$FEEDBIN_PASSWORD" ]]; then
-      mkdir -p "$(dirname "$OP_FEEDBIN_CACHE_FILE")"
-      umask 077
-      cat > "$OP_FEEDBIN_CACHE_FILE" <<EOF
-export FEEDBIN_EMAIL=$(printf '%q' "$FEEDBIN_EMAIL")
-export FEEDBIN_PASSWORD=$(printf '%q' "$FEEDBIN_PASSWORD")
-EOF
-    fi
-
-    unset feedbin_username feedbin_password
-  fi
-fi
+op_env_setup "$OP_FEEDBIN_CACHE_FILE" "$OP_FEEDBIN_CACHE_TTL" \
+  "FEEDBIN_EMAIL=$OP_FEEDBIN_USERNAME_REF" \
+  "FEEDBIN_PASSWORD=$OP_FEEDBIN_PASSWORD_REF"
