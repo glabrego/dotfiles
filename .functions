@@ -39,6 +39,34 @@ function postgres_password { ruby -e 'require "yaml"; p YAML.load(File.read("con
 
 function ask { claude -p "$*"}
 
+function second_brain {
+  local obsidian_dir="$HOME/Documents/glabrego"
+
+  # Open Obsidian app in the background (without bringing to foreground)
+  open -g -a Obsidian
+
+  # If a second-brain window already exists in any session, just switch to it
+  if tmux select-window -t :"🧠 second-brain" 2>/dev/null; then
+    return
+  fi
+
+  # Create a new tmux session if none exists, otherwise open a new window
+  if ! tmux has-session 2>/dev/null; then
+    tmux new-session -d -s main -n "🧠 second-brain" -c "$obsidian_dir"
+    tmux split-window -h -t main -c "$obsidian_dir"
+    tmux send-keys -t "main:🧠 second-brain.2" "claude" Enter
+    tmux select-pane -t "main:🧠 second-brain.1"
+    tmux send-keys -t "main:🧠 second-brain.1" "nvim" Enter
+    tmux attach-session -t main
+  else
+    tmux new-window -n "🧠 second-brain" \; \
+      send-keys "cd $obsidian_dir && nvim" Enter \; \
+      split-window -h \; \
+      send-keys "cd $obsidian_dir && claude" Enter \; \
+      select-pane -L
+  fi
+}
+
 function op_env_cache_is_fresh() {
   local cache_file="$1"
   local cache_ttl="$2"
