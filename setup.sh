@@ -158,7 +158,7 @@ clone_repositories() {
   echo 'Cloning most needed repos 🗄'
   [ ! -d ~/workspace/dotfiles ] && gh repo clone glabrego/dotfiles ~/workspace/dotfiles || true &
   [ ! -d ~/workspace/my-changelog ] && gh repo clone glabrego/my-changelog ~/workspace/my-changelog || true &
-  [ ! -d ~/workspace/glabrego.github.io ] && gh repo clone glabrego/glabrego.github.io ~/workspace/glabrego.github.io || true &
+  [ ! -d ~/workspace/glabrego-blog ] && gh repo clone glabrego/glabrego-blog ~/workspace/glabrego-blog || true &
   [ ! -d ~/workspace/glabrego-codes ] && gh repo clone glabrego/glabrego-codes ~/workspace/glabrego-codes || true &
   [ ! -d ~/.tmux/plugins/tpm ] && gh repo clone tmux-plugins/tpm ~/.tmux/plugins/tpm || true &
   wait
