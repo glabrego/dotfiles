@@ -16,6 +16,8 @@ alias ..='z ..'
 alias ...='z ../../'
 alias cd='z'
 alias env='env | sort'
+alias speedtest='networkQuality'
+alias speedtest-cli='networkQuality'
 
 # Containers
 alias redis_container='docker run -d -p 6379:6379 redis'
