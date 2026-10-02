@@ -1,8 +1,6 @@
-tap "1password/tap"
 tap "borkdude/brew"
 tap "clojure/tools"
 tap "coursier/formulas"
-tap "nikitabobko/tap"
 brew "xz"
 brew "tree"
 brew "gettext"
