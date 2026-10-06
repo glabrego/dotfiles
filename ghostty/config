@@ -11,3 +11,8 @@ shell-integration = detect
 shell-integration-features = cursor,sudo,title
 scrollback-limit = 10000
 copy-on-select = clipboard
+
+# Fix: dead-key accent composition (Option+e, Option+n, Option+c, etc.)
+# being swallowed instead of producing á/ñ/ç. Leaving this unset breaks
+# macOS accent composition on some Ghostty versions.
+macos-option-as-alt = false
