@@ -248,6 +248,15 @@ configure_ghostty() {
   echo 'Configuring Ghostty terminal 👻'
   [ -d ~/.config/ghostty ] && [ ! -L ~/.config/ghostty ] && rm -rf ~/.config/ghostty
   ln -sfn ~/workspace/dotfiles/ghostty ~/.config/ghostty
+
+  # Ghostty.app launched via Dock/Spotlight doesn't inherit XDG_CONFIG_HOME,
+  # so it always reads the macOS Application Support path instead of
+  # ~/.config/ghostty. Symlink it to the same file so there's one source
+  # of truth regardless of how Ghostty is launched.
+  local app_support_dir="$HOME/Library/Application Support/com.mitchellh.ghostty"
+  mkdir -p "$app_support_dir"
+  [ -f "$app_support_dir/config" ] && [ ! -L "$app_support_dir/config" ] && rm -f "$app_support_dir/config"
+  ln -sfn ~/workspace/dotfiles/ghostty/config "$app_support_dir/config"
   echo 'Done!'
 }
 
